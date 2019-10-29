@@ -9,17 +9,12 @@ else
 {
 	$auth = false;
 }
-?>
-
-
-<?php
-
 if ($auth === true)
 {
 ?>
 	<div id="login">
-	<p> Log on user : <?= $login?>  </br>
-	<a href="/my-account">My account</a></p>
+	<p><a href="/my-account">My account</a></br>
+	<a href="/sign-out">Log out</a></p>
 	</div>
 <?php
 }

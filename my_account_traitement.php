@@ -1,4 +1,5 @@
 <?php
+//for the moment same as traitement
 session_start();
 $login =  $_POST['login'];
 $mail = $_POST['mail'];

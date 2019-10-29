@@ -5,13 +5,16 @@ require_once 'Router.class.php';
 $uri = $_SERVER['REQUEST_URI'];
 $router = new Router($uri);
 
-$router->map('GET','', "home", "Home"); //methode, path, target
-$router->map('GET','/', "home", "Home"); //methode, path, target
-$router->map('GET','/home', "home", "Home"); //methode, path, target
-$router->map('GET','/contact-us', "contact", "Contact"); //methode, path, target, name
-$router->map('GET','/sign-up', "sign_up", "Sign-Up"); //methode, path, target, name
-$router->map('GET','/sign-in', "sign_in", "Sign-In"); //methode, path, target, name
-$router->map('GET','/my-account', "my_account", "My account"); //methode, path, target, name
+
+$router->map('GET','', "home", "Home"); //methode, path, target name
+$router->map('GET','/', "home", "Home");
+$router->map('GET','/home', "home", "Home");
+$router->map('GET','/contact-us', "contact", "Contact");
+$router->map('GET','/sign-up', "sign_up", "Sign-Up");
+$router->map('GET','/sign-in', "sign_in", "Sign-In");
+$router->map('GET','/my-galery', "my_galery", "My galery");
+$router->map('GET','/my-account', "my_account", "My account");
+$router->map('GET','/sign-out', "sign_out", "Sign-out");
 /* $router->map('GET','/my-galery/[i:id]', "galery"); //methode, path, target */
 
 
