@@ -12,3 +12,12 @@
 			<li><a href="my-galery">My galery</a></li>
 		</ul>
 		<?php require 'account.php'; ?>
+
+
+
+<?php
+
+var_dump($match_route);
+
+
+?>

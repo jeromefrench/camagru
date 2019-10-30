@@ -15,6 +15,7 @@ $router->map('GET','/sign-in', "sign_in", "Sign-In");
 $router->map('GET','/my-galery', "my_galery", "My galery");
 $router->map('GET','/my-account', "my_account", "My account");
 $router->map('GET','/sign-out', "sign_out", "Sign-out");
+$router->map('GET','/galery', "galery", "Galery");
 /* $router->map('GET','/my-galery/[i:id]', "galery"); //methode, path, target */
 
 
@@ -38,5 +39,4 @@ else
 	require 'footer.php';
 }
 
-include 'footer.html';
 ?>

@@ -20,6 +20,12 @@
 	vertical-align:top;
 	min-height:500px;
 }
+#pastille{
+	width:640px;
+	height:210px;
+	overflow:scroll;
+	/* border:solid 2px blue; */
+}
 #side img{
 	max-width:100%;
 	margin-bottom:20px;
@@ -36,6 +42,7 @@
 	/* border:solid 2px red; */
 	width:60%;
 	margin-right:8%;
+	height:200px;
 }
 
 #video{

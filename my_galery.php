@@ -2,7 +2,7 @@
 if ($_SESSION['logon'] == false)
 {
 	echo "Please register before use";
-	return;
+	exit;
 }
 ?>
 
@@ -17,14 +17,36 @@ if ($_SESSION['logon'] == false)
 </div>
 
 <script>
+var xmlhttp = new XMLHttpRequest();
 
 function add_image_on_side(src){
-	const img2 = document.createElement("img");
-	img2.src = src;
-	img2.id = "imgscreenshot";
-	const side = document.querySelector("#side");
-	side.appendChild(img2);
+
+var formdata = new FormData();
+formdata.append('file', src);
+
+xmlhttp.open("POST", "image.php", false);
+/* xmlhttp.setRequestHeader('Content-Type', 'multipart/form-data'); */
+xmlhttp.send(formdata);
+
+const img2 = document.createElement("img");
+img2.src = src;
+img2.id = "imgscreenshot";
+const side = document.querySelector("#side");
+side.appendChild(img2);
 }
+
+
+
+xmlhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		console.log(this.responseText);
+	}
+};
+
+
+
+
+
 
 const constraints = {
   video: true
@@ -52,10 +74,15 @@ screenshotButton.onclick = video.onclick = function() {
   canvas.getContext('2d').drawImage(video, 0, 0);
   // Other browsers will fall back to image/png
 
-add_image_on_side(canvas.toDataURL('image/webp'));
+add_image_on_side(canvas.toDataURL('image/png'));
 
 
   /* img.src = canvas.toDataURL('image/webp'); */
+
+
+
+
+
 };
 
 /* function handleSuccess(stream) { */
