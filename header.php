@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php require 'account.php'; ?>
 <html>
 	<head>
 		<meta charset="utf-8"/>
@@ -11,13 +11,3 @@
 			<li><a href="galery">Galery</a></li>
 			<li><a href="my-galery">My galery</a></li>
 		</ul>
-		<?php require 'account.php'; ?>
-
-
-
-<?php
-
-var_dump($match_route);
-
-
-?>

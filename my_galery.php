@@ -5,8 +5,6 @@ if ($_SESSION['logon'] == false)
 	exit;
 }
 ?>
-
-
 <h1>My galery</h1>
 <div id="my_galery">
 	<div id="main">
@@ -16,78 +14,9 @@ if ($_SESSION['logon'] == false)
 	<?php include 'side.html';?>
 </div>
 
-<script>
-var xmlhttp = new XMLHttpRequest();
 
-function add_image_on_side(src){
-
-var formdata = new FormData();
-formdata.append('file', src);
-
-xmlhttp.open("POST", "image.php", false);
-/* xmlhttp.setRequestHeader('Content-Type', 'multipart/form-data'); */
-xmlhttp.send(formdata);
-
-const img2 = document.createElement("img");
-img2.src = src;
-img2.id = "imgscreenshot";
-const side = document.querySelector("#side");
-side.appendChild(img2);
-}
-
-
-
-xmlhttp.onreadystatechange = function() {
-	if (this.readyState == 4 && this.status == 200) {
-		console.log(this.responseText);
-	}
-};
-
-
-
-
-
-
-const constraints = {
-  video: true
-};
-
-const video = document.querySelector('video');
-
-navigator.mediaDevices.getUserMedia(constraints).
-	  then((stream) => {video.srcObject = stream});
-
-/* const captureVideoButton = document.querySelector('#screenshot .capture-button'); */
-const screenshotButton = document.querySelector('#screenshot-button');
-
-/* const img = document.querySelector('#imgscreenshot'); */
-const canvas = document.createElement('canvas');
-
-/* captureVideoButton.onclick = function() { */
-/*   navigator.mediaDevices.getUserMedia(constraints). */
-/*     then(handleSuccess).catch(handleError); */
-/* }; */
-
-screenshotButton.onclick = video.onclick = function() {
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-  canvas.getContext('2d').drawImage(video, 0, 0);
-  // Other browsers will fall back to image/png
-
-add_image_on_side(canvas.toDataURL('image/png'));
-
-
-  /* img.src = canvas.toDataURL('image/webp'); */
-
-
-
-
-
-};
-
-/* function handleSuccess(stream) { */
-/*   screenshotButton.disabled = false; */
-/*   video.srcObject = stream; */
-/* } */
+<script type="text/javascript" >
+	var login = '<?php echo $login; ?>';
 </script>
+<script src="my_galery_script.js"></script>
 

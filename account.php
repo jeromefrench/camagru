@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['logon'] == true)
+if (isset($_SESSION['logon']) && $_SESSION['logon'] == true)
 {
 	$auth = true;
 	$login = $_SESSION['login'];
