@@ -111,6 +111,13 @@ li{
 	margin-right:auto;
 	width:400px;
 }
+
 .form  p{
 	margin-left:20px;
+}
+
+#galery img{
+	height:300px;
+	width:450px;
+	margin:30px;
 }

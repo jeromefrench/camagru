@@ -4,12 +4,12 @@ var xmlhttp = new XMLHttpRequest();
 function add_image_on_side(src){
 	var formdata = new FormData();
 	formdata.append('file', src);
-	xmlhttp.open("POST", "image.php", false);
+	xmlhttp.open("POST", "image.php");
 	/* xmlhttp.setRequestHeader('Content-Type', 'multipart/form-data'); */
 	xmlhttp.send(formdata);
 }
 
-
+	var xmlhttp2 = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
@@ -17,18 +17,29 @@ xmlhttp.onreadystatechange = function() {
 		const img2 = document.createElement("img");
 		img2.src = "image_3.png";
 		var string = this.responseText.replace(/[\n\t\r]/g,"").trim();
+		console.log("salut");
 		console.log(string);
 		img2.src = string;
+		console.log(img2.scr);
 		// img2.id = "imgscreenshot";
 		const side = document.querySelector("#side");
 		side.appendChild(img2);
+		var formdata2 = new FormData();
+		formdata2.append('file2', string);
+		formdata2.append('login', login);
+		xmlhttp2.open("POST", "image2.php");
+		xmlhttp2.send(formdata2);
 	}
-	var xmlhttp2 = new XMLHttpRequest();
-	var formdata2 = new FormData();
-	formdata2.append('file2', string);
-	formdata2.append('login', login);
-	xmlhttp2.open("POST", "image2.php", false);
-	xmlhttp2.send(formdata2);
+};
+
+
+
+xmlhttp2.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200)
+	{
+		console.log("hello");
+		console.log(this.responseText);
+	}
 };
 
 

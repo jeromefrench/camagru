@@ -1,6 +1,23 @@
 <?php
-require_once '../Route.class.php';
-require_once '../Router.class.php';
+$uri = $_SERVER['REQUEST_URI'];
+
+
+if ($uri == "/sign_up_traitement.php")
+{
+	require "../app/sign_up_traitement.php";
+}
+else if ($uri == "/sign_in_traitement.php")
+{
+	require "../app/sign_in_traitement.php";
+}
+else if ($uri == "/sign-out")
+{
+	require '../app/sign_out.php';
+}
+
+
+require_once '../app/Route.class.php';
+require_once '../app/Router.class.php';
 
 $uri = $_SERVER['REQUEST_URI'];
 $router = new Router($uri);
@@ -19,24 +36,10 @@ $router->map('GET','/galery', "galery", "Galery");
 /* $router->map('GET','/my-galery/[i:id]', "galery"); //methode, path, target */
 
 
-
 $match_route = $router->run();
 if ($match_route != false)
-{
-	if (is_callable($match_route->_target))
-	{
-		call_user_func($match_route->_target);
-	}
-	else
-	{
-		require "../{$match_route->_target}.php";
-	}
-}
+		require "../controler/{$match_route->_target}.php";
 else
-{
-	//require 'header.php';
 	echo "404 error";
-	//require 'footer.php';
-}
 
 ?>
