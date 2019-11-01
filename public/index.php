@@ -1,6 +1,6 @@
 <?php
-require_once 'Route.class.php';
-require_once 'Router.class.php';
+require_once '../Route.class.php';
+require_once '../Router.class.php';
 
 $uri = $_SERVER['REQUEST_URI'];
 $router = new Router($uri);
@@ -24,19 +24,19 @@ $match_route = $router->run();
 if ($match_route != false)
 {
 	if (is_callable($match_route->_target))
+	{
 		call_user_func($match_route->_target);
+	}
 	else
 	{
-		require 'header.php';
-		require "{$match_route->_target}.php";
-		require 'footer.php';
+		require "../{$match_route->_target}.php";
 	}
 }
 else
 {
-	require 'header.php';
+	//require 'header.php';
 	echo "404 error";
-	require 'footer.php';
+	//require 'footer.php';
 }
 
 ?>

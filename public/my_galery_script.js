@@ -1,3 +1,4 @@
+
 var xmlhttp = new XMLHttpRequest();
 
 function add_image_on_side(src){
@@ -7,6 +8,9 @@ function add_image_on_side(src){
 	/* xmlhttp.setRequestHeader('Content-Type', 'multipart/form-data'); */
 	xmlhttp.send(formdata);
 }
+
+
+
 xmlhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 		console.log(this);

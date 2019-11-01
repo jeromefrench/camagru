@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 	</head>
 	<body>
-		<a id="logo" href="/home"><img src="../img/logo.png" ></a>
+		<a id="logo" href="/home"><img src="img/logo.png" ></a>
 		<ul id="header">
 			<li><a href="galery">Galery</a></li>
 			<li><a href="my-galery">My galery</a></li>

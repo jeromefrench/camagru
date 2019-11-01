@@ -8,6 +8,7 @@ if (isset($_SESSION['logon']) && $_SESSION['logon'] == true)
 else
 {
 	$auth = false;
+	$login = null;
 }
 if ($auth === true)
 {

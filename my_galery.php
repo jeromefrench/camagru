@@ -1,5 +1,9 @@
+<?php require '../header.php';?>
+
+
 <?php
-if ($_SESSION['logon'] == false)
+
+if (isset($_SESSION['logon']) && $_SESSION['logon'] == false)
 {
 	echo "Please register before use";
 	exit;
@@ -18,5 +22,10 @@ if ($_SESSION['logon'] == false)
 <script type="text/javascript" >
 	var login = '<?php echo $login; ?>';
 </script>
-<script src="my_galery_script.js"></script>
 
+
+
+<script src="my_galery_script.js"></script>
+<?php
+		require '../footer.php';
+?>
