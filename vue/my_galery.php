@@ -1,6 +1,6 @@
 
-<h1>My galery</h1>
-<div id="my_galery">
+<h1>Montage</h1>
+<div id="montage">
 	<div id="main">
 		<?php include '../vue/pastille.html';?>
 		<?php include '../vue/video.html';?>

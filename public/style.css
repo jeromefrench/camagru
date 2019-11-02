@@ -7,7 +7,7 @@
 	max-width:100%;
 }
 
-#my_galery{
+#montage{
 	width:90%;
 	margin-left:auto;
 	margin-right:auto;
@@ -72,31 +72,33 @@ li{
 	list-style-type:none;
 }
 #login{
+	position:relative;
 	padding-left:10px;
 	width:100px;
-	position:absolute;
-	right:10px;
-	top:10px;
+	text-align:left;
+	left:800px;
+	top:-110px;
 }
 #login{
-	font-size:14px
+	font-size:19px
 }
 #login a{
-	font-size:14px
+	font-size:19px
 }
-#header{
+#nav{
+	text-align:center;
 	background-color:blue;
 	margin-top:0;
 }
-#header li{
+#nav li{
 	display:inline-block;
 	margin-right:30px;
 	padding:3px;
 }
-#header a{
+#nav a{
 	color:white;
 }
-#header a:hover{
+#nav a:hover{
 	text-decoration:underline;
 	color:red;
 }
@@ -117,7 +119,33 @@ li{
 }
 
 #galery img{
-	height:300px;
-	width:450px;
-	margin:30px;
+	height:150px;
+	width:225px;
+	margin:15px;
 }
+
+#galery{
+	width:900px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#pagination{
+	text-align:center;
+
+}
+
+#pagination li{
+	display:inline-block;
+
+}
+
+body{
+	width:920px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+

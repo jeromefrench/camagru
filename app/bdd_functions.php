@@ -124,4 +124,106 @@ function get_photo($conn)
 	return false;
 }
 
+function get_nbr_of_photo($conn)
+{
+	try {
+    	$stmt = $conn->prepare("SELECT count(*) FROM `photos`"); 
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		return $data[0][0];
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+
+}
+
+function get_photo_for_page($conn, $first, $nbr_per_page)
+{
+	try {
+    	$stmt = $conn->prepare("SELECT * FROM `photos` ORDER BY id DESC LIMIT ".$first.",  ".$nbr_per_page.""); 
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		return $data;
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
+
+function get_photo_with_id($conn, $id)
+{
+	try {
+    	$stmt = $conn->prepare("SELECT * FROM `photos` WHERE `id` = ".$id." "); 
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		return $data[0];
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
+
+function add_comment($conn, $commentaire, $id_user, $id_photo)
+{
+	try {
+    	$sql = "INSERT INTO `commentaires` (`id`, `commentaire`, `time_stamp`, `id_user`, `id_photo`) VALUES (NULL, '".$commentaire."',  '2019-11-09', '".$id_user."'  , '".$id_photo."'  );";
+
+    	// use exec() because no results are returned
+    	$conn->exec($sql);
+    	/* echo "New record created successfully"; */
+    }
+	catch(PDOException $e)
+    {
+		echo "hello2";
+    	echo $sql . "<br>" . $e->getMessage();
+    }
+}
+function add_like($conn, $id_user, $id_photo)
+{
+	try {
+    	$sql = "INSERT INTO `like_it` (`id`, `id_user`, `id_photo`) VALUES (NULL, '".$id_user."'  , '".$id_photo."'  );";
+
+    	// use exec() because no results are returned
+    	$conn->exec($sql);
+    	/* echo "New record created successfully"; */
+    }
+	catch(PDOException $e)
+    {
+		echo "hello2";
+    	echo $sql . "<br>" . $e->getMessage();
+    }
+
+}
+
+function get_number_of_like($conn, $id_photo){
+	try {
+    	$stmt = $conn->prepare("SELECT count(*) FROM `like_it` WHERE `id_photo` = ".$id_photo.""); 
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		return $data[0][0];
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
+
+function get_the_commentaires($conn, $id_photo){
+	try {
+    	$stmt = $conn->prepare("SELECT * FROM `commentaires` WHERE `id_photo` = ".$id_photo." "); 
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		return $data;
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
+
+
 ?>
