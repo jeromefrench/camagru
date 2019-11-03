@@ -1,12 +1,7 @@
 
 <?php require '../vue/header.php';?>
-<?php
-if (!isset($_SESSION['logon']) || $_SESSION['logon'] == false)
-{
-	echo "<h1>Please register before use</h1>";
-	exit;
-}
-?>
+<?php require '../app/restricted_to_logon.php';?>
+
 
 <?php include '../vue/my_galery.php'?>
 

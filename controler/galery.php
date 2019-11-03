@@ -12,19 +12,16 @@ $nbr_photo = get_nbr_of_photo($conn);
 $nbr_photo_page = 9;
 $nbr_page = ($nbr_photo / $nbr_photo_page) + 1;
 
-
 if (($match_route->_id > 0) && ($match_route->_id <= $nbr_page))
 	$current_page = $match_route->_id;
 else
 	$current_page = 1;
 
 $photo_first = ($current_page - 1) * $nbr_photo_page;
-$photo_last = $photo_first + $nbr_photo_page;
 ?>
 
 <?php
 $conn = connection_bdd();
-/* $photos = get_photo($conn); */
 $photos = get_photo_for_page($conn, $photo_first, $nbr_photo_page);
 
 foreach ($photos as $photo)
@@ -36,21 +33,17 @@ foreach ($photos as $photo)
 ?>
 
 </div>
-<ul>
-
 
 <div id="pagination">
+<ul>
 <?php		if (($current_page - 1) > 0) {?>
 				<li><a href="/galery/<?php echo $current_page - 1;?>">Precedent</li>
 <?php			}	?>
- 	<li><?php echo  $current_page;?></li>
+ 	<li class="current_page"><?php echo  $current_page;?></li>
 <?php
 
 if (($current_page + 1) <= $nbr_page)
-{
 	echo '<li><a href="/galery/'.($current_page + 1).'">Suivant</a></li>';
-}
-
 ?>
 </ul>
 </div>

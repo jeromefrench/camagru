@@ -142,7 +142,7 @@ function get_nbr_of_photo($conn)
 function get_photo_for_page($conn, $first, $nbr_per_page)
 {
 	try {
-    	$stmt = $conn->prepare("SELECT * FROM `photos` ORDER BY id DESC LIMIT ".$first.",  ".$nbr_per_page.""); 
+    	$stmt = $conn->prepare("SELECT * FROM `photos` ORDER BY id DESC LIMIT ".$first.",  ".$nbr_per_page."");
     	$stmt->execute();
 		$data = $stmt->fetchAll();
 		return $data;
@@ -225,5 +225,44 @@ function get_the_commentaires($conn, $id_photo){
 	return false;
 }
 
+function get_photo_for_the_user($conn, $id_user)
+{
+	try {
+    	$stmt = $conn->prepare("SELECT * FROM `photos` WHERE `id_user` = ".$id_user." ");
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		return $data;
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
+function get_nbr_photo_for_the_user($conn, $id_user)
+{
+	try {
+    	$stmt = $conn->prepare("SELECT count(*) FROM `photos` WHERE `id_user` = ".$id_user." ");
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		return $data[0][0];
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
 
+function get_photo_for_page_for_user($conn, $first, $nbr_per_page, $id_user)
+{
+	try {
+    	$stmt = $conn->prepare("SELECT * FROM `photos` WHERE `id_user` = ".$id_user." ORDER BY id DESC LIMIT ".$first.",  ".$nbr_per_page."");
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		return $data;
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
 ?>

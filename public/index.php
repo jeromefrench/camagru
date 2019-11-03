@@ -37,7 +37,9 @@ $router->map('GET','/my-galery', "my_galery", "My galery");
 $router->map('GET','/my-account', "my_account", "My account");
 $router->map('GET','/sign-out', "sign_out", "Sign-out");
 $router->map('GET','/galery', "galery", "Galery");
-$router->map('GET','/galery/photo', "galery_photo", "Galery");
+$router->map('GET','/galery/photo', "galery_photo", "Galery-photo");
+
+
 $router->map('GET','/montage', "montage", "Montage");
 
 

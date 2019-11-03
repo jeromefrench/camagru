@@ -13,8 +13,6 @@
 			<li><a href="/my-galery">My galery</a></li>
 			<li><a href="/montage">Montage</a></li>
 		</ul>
-
-
 <?php
 if (isset($_SESSION['logon']) && $_SESSION['logon'] == true)
 {
@@ -45,5 +43,4 @@ else
 <?php
 }
 ?>
-
 </div>
