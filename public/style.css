@@ -1,4 +1,6 @@
-
+#header{
+	height:130px;
+}
 #pastille{
 	width:630px;
 	height:160px;
@@ -18,7 +20,7 @@
 }
 #side{
 	width:260px;
-	border:solid 2px green;
+	/* border:solid 2px green; */
 	display:inline-block;
 	float:right;
 	vertical-align:top;

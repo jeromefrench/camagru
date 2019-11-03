@@ -7,9 +7,9 @@ $test1 = base64_decode($test1);
 $fileName = 'photo1.png';
 file_put_contents($fileName, $test1);
 
-
+$filter = $_POST['filter'];
 $image_1 = imagecreatefrompng('photo1.png');
-$image_2 = imagecreatefrompng('img/wings_copy.png');
+$image_2 = imagecreatefrompng($filter);
 imagealphablending($image_2, true);
 imagesavealpha($image_2, true);
 imagecopy($image_1, $image_2, 0, 0, 0, 0, 640, 480);

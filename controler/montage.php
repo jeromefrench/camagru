@@ -9,5 +9,5 @@
 	var login = '<?php echo $login; ?>';
 </script>
 
-<script src="my_galery_script.js"></script>
+<script src="montage_script.js"></script>
 <?php require '../vue/footer.php'; ?>
