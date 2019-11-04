@@ -23,9 +23,9 @@ function is_login_exist($conn, $login)
 {
 
 	try {
-    	$stmt = $conn->prepare("SELECT id, login, mail, passwd FROM user"); 
+    	$stmt = $conn->prepare("SELECT id, login, mail, passwd FROM user");
     	$stmt->execute();
-    	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+    	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 		$data = $stmt->fetchAll();
 		foreach ($data as $array)
 		{
@@ -93,6 +93,38 @@ function get_user_id($conn, $login)
 	return false;
 }
 
+function get_login_user($conn, $user_id)
+{
+	try {
+    	$stmt = $conn->prepare("SELECT `login` FROM `user` WHERE `id` = '".$user_id."'");
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		foreach ($data as $array)
+		{
+			return $array['login'];
+		}
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
+function get_mail_user($conn, $login)
+{
+	try {
+    	$stmt = $conn->prepare("SELECT `mail` FROM `user` WHERE `login` = '".$login."'");
+    	$stmt->execute();
+		$data = $stmt->fetchAll();
+		foreach ($data as $array)
+		{
+			return $array['mail'];
+		}
+	}
+	catch(PDOException $e) {
+    	echo "Error: " . $e->getMessage();
+	}
+	return false;
+}
 
 function insert_picture($conn, $name, $time, $id_user)
 {
@@ -264,5 +296,52 @@ function get_photo_for_page_for_user($conn, $first, $nbr_per_page, $id_user)
     	echo "Error: " . $e->getMessage();
 	}
 	return false;
+}
+function update_login($conn, $login, $new_login)
+{
+	try{
+		$sql = "UPDATE `user` SET `login`='".$new_login."' WHERE `login` LIKE '".$login."'";
+    	$stmt = $conn->prepare($sql);
+    	$stmt->execute();
+    	echo $stmt->rowCount() . " records UPDATED successfully";
+	}
+	catch(PDOException $e)
+	{
+    	echo $sql . "<br>" . $e->getMessage();
+	}
+
+	$conn = null;
+}
+function update_mail($conn, $login, $new_mail)
+{
+	try
+	{
+		$sql = "UPDATE `user` SET `mail`='".$new_mail."' WHERE `login` LIKE '".$login."'";
+    	$stmt = $conn->prepare($sql);
+    	$stmt->execute();
+    	echo $stmt->rowCount() . " records UPDATED successfully";
+	}
+	catch(PDOException $e)
+	{
+    	echo $sql . "<br>" . $e->getMessage();
+	}
+
+	$conn = null;
+}
+function update_passwd($conn, $login, $new_passwd1)
+{
+	try
+	{
+		$sql = "UPDATE `user` SET `passwd`='".$new_passwd1."' WHERE `login` LIKE '".$login."'";
+    	$stmt = $conn->prepare($sql);
+    	$stmt->execute();
+    	echo $stmt->rowCount() . " records UPDATED successfully";
+	}
+	catch(PDOException $e)
+	{
+    	echo $sql . "<br>" . $e->getMessage();
+	}
+
+	$conn = null;
 }
 ?>

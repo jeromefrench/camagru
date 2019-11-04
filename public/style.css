@@ -1,3 +1,40 @@
+#photo{
+	width:640px;
+}
+
+#nbr_like{
+	display:inline-block;
+	margin:20px;
+}
+
+#like{
+	display:inline-block;
+	position:relative;
+	float:right;
+	margin:20px;
+}
+
+#photo{
+	margin-right:auto;
+	margin-left:auto;
+	background-color:LightGray;
+	padding:30px;
+}
+
+.commentaire{
+	margin-left:50px;
+}
+
+.to_center{
+	text-align:center;
+}
+
+.to_center input[type=text]{
+	width:500px;
+	height:70px;
+}
+
+
 #header{
 	height:130px;
 }
