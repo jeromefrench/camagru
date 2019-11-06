@@ -1,12 +1,9 @@
 <?php
 session_start();
-
 require_once 'bdd_functions.php';
-
 $login = $_POST['login'];
 $passwd = $_POST['passwd'];
 $conn = connection_bdd();
-
 
 if (!is_login_exist($conn, $login))
 {

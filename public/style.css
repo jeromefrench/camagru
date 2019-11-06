@@ -126,6 +126,11 @@ li{
 	text-align:right;
 	margin-right:30px;
 	margin-top:50px;
+	background-color:blue;
+	padding-right:30px;
+}
+#footer a{
+	color:white;
 }
 .form{
 	border:solid 2px black;
@@ -133,29 +138,24 @@ li{
 	margin-right:auto;
 	width:400px;
 }
-
 .form  p{
 	margin-left:20px;
 }
-
 #galery img{
 	height:150px;
 	width:225px;
 	margin:15px;
 }
-
 #galery{
 	width:900px;
 	text-align:center;
 	margin-left:auto;
 	margin-right:auto;
 }
-
 #pagination{
 	text-align:center;
 
 }
-
 #pagination li{
 	display:inline-block;
 }
@@ -163,12 +163,21 @@ li{
 #pagination .current_page{
 	font-size:30px;
 }
-
 body{
 	width:920px;
 	margin-left:auto;
 	margin-right:auto;
 }
-
-
+#new_passwd{
+	display:inline-block;
+	margin-left:170px;
+}
+#new_passwd a{
+	font-size:12px;
+	text-decoration:underline;
+}
+#passwda{
+	display:inline-block;
+	border:solid 2px green;
+}
 

@@ -44,5 +44,20 @@ else if (isset($_POST['submit']) && $_POST['submit'] == "I change my password")
 	header('Location: https://37.187.109.62/');
 	exit;
 }
+else if (isset($_POST['submit']) && $_POST['submit'] == "I change notification")
+{
+
+	if ($_POST['notification'] == '1')
+		$notification = "1";
+	else
+		$notification = "0";
+		update_notification($conn, $login, $notification);
+	header('Location: https://37.187.109.62/');
+}
+else
+{
+	header('Location: https://37.187.109.62/');
+}
+
 
 ?>

@@ -41,14 +41,8 @@ foreach ($commentaires as $commentaire)
 	<input type="submit" name="comment-submit" value="Publier commentaire">
 </div>
 	</p>
-
-
 </form>
-
 </div>
-
-
-
 
 
 <?php require '../vue/footer.php'; ?>

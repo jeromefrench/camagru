@@ -7,6 +7,7 @@ class Route{
 	public $_name;
 	static public $verbos = false;
 	public $_id;
+	public $_slug;
 
 	public function __construct($methode, $path, $target, $name){
 		$this->_methode = $methode;
@@ -18,16 +19,24 @@ class Route{
 		}
 	}
 	public function match($url){
-		$path = trim($this->_path, "/");
-		$path = str_replace("/", "", $this->_path);
-		$url = trim($url, "/");
-		$url = str_replace("/", "", $url);
-		$regex1 = "/^{$path}\$/i";
-		$regex2 =  "/^({$path})([0-9]*)\$/i";
+		$path = str_replace("/", " ", $this->_path);
+		$path = trim($path);
+		$url = str_replace("/", " ", $url);
+		$url = trim($url);
 
- 		if (preg_match($regex2, $url, $match))
+		$regex1 = "/^{$path}\$/i";
+		$regex2 =  "/^({$path}) ([0-9]+)\$/i";
+		$regex3 =  "/^({$path}) ([^\s]+) ([0-9]+)\$/i";
+
+		if (preg_match($regex2, $url, $match))
 		{
 			$this->_id = $match[2];
+			return true;
+		}
+		else if (preg_match($regex3, $url, $match))
+		{
+			$this->_slug = $match[2];
+			$this->_id = $match[3];
 			return true;
 		}
 		else if (preg_match($regex1, $url))  // pattern,  input string
@@ -45,9 +54,6 @@ class Route{
 			"path: ".$this->_path."</br>".
 			"target: ".$this->_target."</br>".
 			"name: ".$this->_name."</br></br>";
-
 	}
 }
-
-
 ?>
