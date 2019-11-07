@@ -19,6 +19,7 @@ else
 		&& $passwd1 === $passwd2
 		&& $passwd2 != null)
 	{
+		$passwd1 = hash("sha256", $passwd1);
 		update_password($conn, $login, $passwd1);
 		echo "<p>Le password a ete change</p>";
 	}

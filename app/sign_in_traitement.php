@@ -11,6 +11,7 @@ if (!is_login_exist($conn, $login))
 	exit;
 }
 
+$passwd = hash("sha256", $passwd);
 if (!is_login_and_password_match($conn, $login, $passwd))
 {
 	header('Location: http://localhost:8080/sign-in');

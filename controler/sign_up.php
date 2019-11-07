@@ -31,7 +31,7 @@ else
 			$user = [];
 			$user['login'] = $login;
 			$user['mail'] = $mail;
-			$user['passwd'] = $passwd;
+			$user['passwd'] = hash("sha256", $passwd);
 			$user['numero_unique'] = $numero;
 			add_new_user_confirmation($conn, $user);
 		}

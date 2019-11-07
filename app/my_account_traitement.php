@@ -39,6 +39,7 @@ else if (isset($_POST['submit']) && $_POST['submit'] == "I change my password")
 	}
 	else
 	{
+		$new_passwd1 = hash("sha256", $new_passwd1)
 		update_passwd($conn, $login, $new_passwd1);
 	}
 	header('Location: http://localhost:8080/');
