@@ -17,8 +17,8 @@ else
 	}
 	else
 	{
-		$login = $_POST['login'];
-		$mail = $_POST['mail'];
+		$login = htmlspecialchars($_POST['login']);
+		$mail = htmlspecialchars($_POST['mail']);
 		$conn = connection_bdd();
 		is_login_and_mail_match($conn, $login, $mail);
 		{

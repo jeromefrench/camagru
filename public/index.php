@@ -23,8 +23,6 @@ else if ($uri == "/my_account_traitement.php")
 	require '../app/my_account_traitement.php';
 }
 
-echo $uri;
-
 require_once '../app/Route.class.php';
 require_once '../app/Router.class.php';
 

@@ -11,10 +11,10 @@ if (!isset($_POST['submit']))
 }
 else
 {
-	$passwd1 = $_POST['passwd1'];
-	$passwd2 = $_POST['passwd2'];
-	$numero = $_POST['numero'];
-	$login = $_POST['login'];
+	$passwd1 = htmlspecialchars($_POST['passwd1']);
+	$passwd2 = htmlspecialchars($_POST['passwd2']);
+	$numero = htmlspecialchars($_POST['numero']);
+	$login = htmlspecialchars($_POST['login']);
 	if (is_numero_and_login_match_new_passwd($conn, $login, $numero)
 		&& $passwd1 === $passwd2
 		&& $passwd2 != null)

@@ -47,9 +47,6 @@ else
 </script>
 <?php
 }
-
 ?>
-
-
 
 <?php require '../vue/footer.php'; ?>

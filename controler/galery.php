@@ -1,4 +1,3 @@
-
 <?php require '../vue/header.php';  ?>
 <?php require_once '../app/bdd_functions.php';?>
 
@@ -18,34 +17,28 @@ else
 	$current_page = 1;
 
 $photo_first = ($current_page - 1) * $nbr_photo_page;
-?>
-
-<?php
-$conn = connection_bdd();
 $photos = get_photo_for_page($conn, $photo_first, $nbr_photo_page);
 
 foreach ($photos as $photo)
 {
-?>
-	<a href="/galery/photo/<?= $photo['id'];?>"><img src="/<?= $photo['name']?>"/></a>
-<?php
+	echo '<a href="/galery/photo/'.$photo["id"].'"><img src="/'.$photo["name"].'"/></a>';
 }
-?>
 
-</div>
+echo '</div>';
+echo '<div id="pagination">';
+echo '<ul>';
 
-<div id="pagination">
-<ul>
-<?php		if (($current_page - 1) > 0) {?>
-				<li><a href="/galery/<?php echo $current_page - 1;?>">Precedent</li>
-<?php			}	?>
- 	<li class="current_page"><?php echo  $current_page;?></li>
-<?php
+
+if (($current_page - 1) > 0) {
+	echo '<li><a href="/galery/'.($current_page - 1).'" >Precedent</a></li>';
+}
+echo '<li class="current_page">'.$current_page.'</li>';
 
 if (($current_page + 1) <= $nbr_page)
 	echo '<li><a href="/galery/'.($current_page + 1).'">Suivant</a></li>';
-?>
-</ul>
-</div>
 
-<?php require '../vue/footer.php'; ?>
+echo '</ul>';
+echo '</div>';
+
+require '../vue/footer.php';
+?>

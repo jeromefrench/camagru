@@ -240,6 +240,7 @@ function add_comment($conn, $commentaire, $id_user, $id_photo)
 		echo "en voi mail";
 		echo $login;
 		require '../app/send_email_notification.php';
+		exit;
 	}
 }
 function add_like($conn, $id_user, $id_photo)

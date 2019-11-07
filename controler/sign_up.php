@@ -9,9 +9,9 @@ if (!isset($_POST['submit']))
 }
 else
 {
-	$login = $_POST['login'];
-	$mail = $_POST['mail'];
-	$passwd = $_POST['passwd'];
+	$login = htmlspecialchars($_POST['login']);
+	$mail = htmlspecialchars($_POST['mail']);
+	$passwd = htmlspecialchars($_POST['passwd']);
 	if ($login == null || $mail == null || $passwd == null)
 	{
 		require '../vue/une_information_manque.html';
@@ -30,7 +30,7 @@ else
 			require '../vue/email_confirmation.php';
 			require '../app/send_email_confirmation.php';
 			$user = [];
-			$user['login'] = $login; 
+			$user['login'] = $login;
 			$user['mail'] = $mail;
 			$user['passwd'] = $passwd;
 			$user['numero_unique'] = $numero;

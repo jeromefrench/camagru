@@ -13,7 +13,7 @@ if (isset($data[0]))
 
 if ($data === false)
 {
-	header('Location: https://37.187.109.62/');
+	header('Location: https://localhost:8080/');
 }
 else if ($data['login'] == $login )
 {
@@ -24,10 +24,10 @@ else if ($data['login'] == $login )
 	add_new_user($conn, $user);
 	$_SESSION['logon'] = true;
 	$_SESSION['login'] = $login;
-	header('Location: https://37.187.109.62/');
+	header('Location: https://localhost:8080/');
 }
 else
 {
-	header('Location: https://37.187.109.62/');
+	header('Location: https://localhost:8080/');
 }
 ?>
