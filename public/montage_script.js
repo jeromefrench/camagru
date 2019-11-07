@@ -1,17 +1,19 @@
-
-
 var xmlhttp = new XMLHttpRequest();
+var xmlhttp2 = new XMLHttpRequest();
+const constraints = {
+  	video: true
+};
 
-function add_image_on_side(src, filter){
+function add_image_on_side(src, filter, type){
 	var formdata = new FormData();
+	console.log(src);
 	formdata.append('file', src);
 	formdata.append('filter', filter);
+	formdata.append('type', type);
 	xmlhttp.open("POST", "image.php");
 	/* xmlhttp.setRequestHeader('Content-Type', 'multipart/form-data'); */
 	xmlhttp.send(formdata);
 }
-
-	var xmlhttp2 = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
@@ -34,8 +36,6 @@ xmlhttp.onreadystatechange = function() {
 	}
 };
 
-
-
 xmlhttp2.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200)
 	{
@@ -44,48 +44,47 @@ xmlhttp2.onreadystatechange = function() {
 	}
 };
 
+function on_creer_le_bouton(photo_bool)
+{
+	const screenshotButton = document.querySelector('#screenshot-button');
+	const canvas = document.createElement('canvas');
+	const photo_elem = document.querySelector('#photo');
 
-const constraints = {
-  	video: true
-};
-const video = document.querySelector('video');
-navigator.mediaDevices.getUserMedia(constraints).  then((stream) => {video.srcObject = stream});
-/* const captureVideoButton = document.querySelector('#screenshot .capture-button'); */
-const screenshotButton = document.querySelector('#screenshot-button');
-/* const img = document.querySelector('#imgscreenshot'); */
-const canvas = document.createElement('canvas');
-/* captureVideoButton.onclick = function() { */
-/*   navigator.mediaDevices.getUserMedia(constraints). */
-/*     then(handleSuccess).catch(handleError); */
-/* }; */
-screenshotButton.onclick = video.onclick = function() {
-  	canvas.width = video.videoWidth;
-  	canvas.height = video.videoHeight;
-  	canvas.getContext('2d').drawImage(video, 0, 0);
-  	// Other browsers will fall back to image/png
-
-	//get the filter nameh
-	if (document.getElementById('r1').checked) {
-  filter = document.getElementById('r1').value;
+	screenshotButton.style.display = "inline";
+	screenshotButton.onclick = video.onclick = function() {
+	console.log(photo_bool);
+		if (photo_bool == 1)
+		{
+  			canvas.width = photo.videoWidth;
+  			canvas.height = photo.videoHeight;
+  			canvas.getContext('2d').drawImage(photo, 0, 0);
+		}
+		else
+		{
+  			canvas.width = video.videoWidth;
+  			canvas.height = video.videoHeight;
+  			canvas.getContext('2d').drawImage(video, 0, 0);
+		}
+		//get the filter nameh
+		if (document.getElementById('r1').checked) {
+  			filter = document.getElementById('r1').value;
+		}
+		else if (document.getElementById('r2').checked) {
+  			filter = document.getElementById('r2').value;
+		}
+		else if (document.getElementById('r3').checked) {
+  			filter = document.getElementById('r3').value;
+		}
+		else if (document.getElementById('r4').checked) {
+  			filter = document.getElementById('r4').value;
+		}
+		if (photo_bool == 1)
+		{
+			add_image_on_side("/photo_upload/"+login, filter, "photo");
+		}
+		else
+		{
+			add_image_on_side(canvas.toDataURL('image/png'), filter, "webcam");
+		}
+	};
 }
-else if (document.getElementById('r2').checked) {
-  filter = document.getElementById('r2').value;
-}
-else if (document.getElementById('r3').checked) {
-  filter = document.getElementById('r3').value;
-}
-else if (document.getElementById('r4').checked) {
-  filter = document.getElementById('r4').value;
-}
-
-console.log("filter");
-console.log(filter);
-
-
-	add_image_on_side(canvas.toDataURL('image/png'), filter);
-  	/* img.src = canvas.toDataURL('image/webp'); */
-};
-/* function handleSuccess(stream) { */
-/*   screenshotButton.disabled = false; */
-/*   video.srcObject = stream; */
-/* } */

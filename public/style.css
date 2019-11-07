@@ -181,3 +181,7 @@ body{
 	border:solid 2px green;
 }
 
+#video #photo{
+	width:200px;
+	height:200px;
+}

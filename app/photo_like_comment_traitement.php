@@ -29,6 +29,10 @@ else if (isset($_POST['like-submit']))
 	header("Location: ".$_SERVER['HTTP_REFERER']."");
 	exit;
 }
-
+else
+{
+	header('Location: https://37.187.109.62/sign-in');
+	exit;
+}
 
 ?>
