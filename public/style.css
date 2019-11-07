@@ -1,0 +1,187 @@
+#photo{
+	width:640px;
+}
+
+#nbr_like{
+	display:inline-block;
+	margin:20px;
+}
+
+#like{
+	display:inline-block;
+	position:relative;
+	float:right;
+	margin:20px;
+}
+
+#photo{
+	margin-right:auto;
+	margin-left:auto;
+	background-color:LightGray;
+	padding:30px;
+}
+
+.commentaire{
+	margin-left:50px;
+}
+
+.to_center{
+	text-align:center;
+}
+
+.to_center input[type=text]{
+	width:500px;
+	height:70px;
+}
+
+
+#header{
+	height:130px;
+}
+#pastille{
+	width:630px;
+	height:160px;
+	overflow:scroll;
+	display:inline-block;
+	margin-top:0;
+	padding-top:0;
+}
+.stiker{
+	width:90px;
+	display:inline-block;
+	margin:40px;
+	margin-top:0;
+}
+.stiker img{
+	max-width:100%;
+}
+#side{
+	width:260px;
+	/* border:solid 2px green; */
+	display:inline-block;
+	float:right;
+	vertical-align:top;
+	min-height:500px;
+}
+#side img{
+	max-width:100%;
+	margin-top:0;
+	margin-bottom:20px;
+}
+
+#imgscreenshot{
+	width:90%;
+	padding-left:5%;
+	padding-right:5%;
+}
+
+#main input[type=button]{
+	margin:20px;
+	height:40px;
+	border:solid 2px black;
+}
+h1{
+	text-align:center;
+}
+a{
+	text-decoration: none;
+	font-size:20px;
+	color:black;
+}
+li{
+	list-style-type:none;
+}
+#login{
+	position:relative;
+	padding-left:10px;
+	width:100px;
+	text-align:left;
+	left:800px;
+	top:-110px;
+}
+#login{
+	font-size:19px
+}
+#login a{
+	font-size:19px
+}
+#nav{
+	text-align:center;
+	background-color:blue;
+	margin-top:0;
+}
+#nav li{
+	display:inline-block;
+	margin-right:30px;
+	padding:3px;
+}
+#nav a{
+	color:white;
+}
+#nav a:hover{
+	text-decoration:underline;
+	color:red;
+}
+#footer{
+	text-align:right;
+	margin-right:30px;
+	margin-top:50px;
+	background-color:blue;
+	padding-right:30px;
+}
+#footer a{
+	color:white;
+}
+.form{
+	border:solid 2px black;
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+}
+.form  p{
+	margin-left:20px;
+}
+#galery img{
+	height:150px;
+	width:225px;
+	margin:15px;
+}
+#galery{
+	width:900px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+#pagination{
+	text-align:center;
+
+}
+#pagination li{
+	display:inline-block;
+}
+
+#pagination .current_page{
+	font-size:30px;
+}
+body{
+	width:920px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#new_passwd{
+	display:inline-block;
+	margin-left:170px;
+}
+#new_passwd a{
+	font-size:12px;
+	text-decoration:underline;
+}
+#passwda{
+	display:inline-block;
+	border:solid 2px green;
+}
+
+#video #photo{
+	width:200px;
+	height:200px;
+}
