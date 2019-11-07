@@ -10,6 +10,10 @@ $data = get_user_confirmation($conn, $numero_unique);
 if (isset($data[0]))
 	$data = $data[0];
 
+var_dump($data);
+echo "</br>";
+var_dump($login);
+
 
 if ($data === false)
 {
@@ -24,7 +28,7 @@ else if ($data['login'] == $login )
 	add_new_user($conn, $user);
 	$_SESSION['logon'] = true;
 	$_SESSION['login'] = $login;
-	header('Location: http://localhost:8080/');
+	header('Location: http://localhost:8080/my-galery');
 }
 else
 {

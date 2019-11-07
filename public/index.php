@@ -1,6 +1,8 @@
 <?php
 $uri = $_SERVER['REQUEST_URI'];
 
+echo $uri;
+
 
 if ($uri == "/sign_up_traitement.php")
 {
@@ -12,6 +14,7 @@ else if ($uri == "/sign_in_traitement.php")
 }
 else if ($uri == "/sign-out")
 {
+	echo "aaaaaaaa";
 	require '../app/sign_out.php';
 }
 else if ($uri == "/photo_like_comment_traitement.php")
@@ -26,6 +29,7 @@ else if ($uri == "/setup.php")
 {
 	require '../config/setup.php';
 }
+
 
 require_once '../app/Route.class.php';
 require_once '../app/Router.class.php';

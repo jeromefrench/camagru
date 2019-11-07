@@ -21,6 +21,21 @@ function is_login_exist($conn, $login)
 		echo "hellow2";
     	echo "Error: " . $e->getMessage();
 	}
+	try {
+    	$stmt = $conn->prepare("SELECT id, login, mail, passwd FROM user_confirmation");
+    	$stmt->execute();
+    	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$data = $stmt->fetchAll();
+		foreach ($data as $array)
+		{
+			if ($array['login'] === $login)
+				return true;
+		}
+	}
+	catch(PDOException $e) {
+		echo "hellow2";
+    	echo "Error: " . $e->getMessage();
+	}
 	return false;
 }
 
@@ -28,7 +43,7 @@ function add_new_user($conn, $user){
 
 try {
     $sql = "INSERT INTO user (login, mail, passwd, notif)
-    VALUES ('{$user['login']}', '{$user['mail']}', '{$user['passwd']}'), '1'";
+    VALUES ('{$user['login']}', '{$user['mail']}', '{$user['passwd']}', '1')";
     $conn->exec($sql);
     echo "New record created successfully";
     }

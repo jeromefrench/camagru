@@ -15,15 +15,14 @@ else
 	if ($login == null || $mail == null || $passwd == null)
 	{
 		require '../vue/une_information_manque.html';
-		require '../vue/sign_up_form.php';
+		require '../vue/sign_up_form.html';
 	}
 	else
 	{
 		if (is_login_exist($conn, $login))
 		{
 			require '../vue/login_deja_pris.php';
-			require '../vue/sign_up_form.php';
-			require '../vue/footer';
+			require '../vue/sign_up_form.html';
 		}
 		else
 		{
