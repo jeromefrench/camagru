@@ -516,4 +516,19 @@ function get_notification($conn, $login)
 	return false;
 }
 
+function sup_photo($conn, $id_photo)
+{
+	try{
+		$sql = "DELETE FROM photos WHERE id=".$id_photo."";
+
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "Record deleted successfully";
+    }
+catch(PDOException $e)
+    {
+    echo $sql . "<br>" . $e->getMessage();
+    }
+}
+
 ?>

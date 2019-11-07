@@ -28,14 +28,21 @@ foreach ($commentaires as $commentaire)
 {
 	echo '<p class="commentaire">';
 	/* echo $commentaire['id_user']; */
-	echo $login = get_login_user($conn, $commentaire['id_user']).":</br>";
+	echo $login_comment = get_login_user($conn, $commentaire['id_user']).":</br>";
 	echo $commentaire['commentaire']."</br>";
 	echo '</p>';
 }
+$id_login = get_user_id($conn, $login);
 ?>
 
 	<p id="comment">
+<?php if($id_login == $photo['id_user'] )
+{
+	echo '<input type="submit" name="submit-sup" value="supprimer">';
+}
+?>
 	<input type="hidden" name="id_photo" value="<?= $match_route->_id;?>">
+	<input type="hidden" name="name" value="<?= $photo['name'];?>">
 <div class="to_center" >
 	<input id="comment_input" type="text" name="comment"></br>
 	<input type="submit" name="comment-submit" value="Publier commentaire">

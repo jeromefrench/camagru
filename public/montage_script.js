@@ -19,6 +19,7 @@ xmlhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 		console.log(this);
 		const img2 = document.createElement("img");
+
 		img2.src = "image_3.png";
 		var string = this.responseText.replace(/[\n\t\r]/g,"").trim();
 		console.log("salut");
@@ -26,8 +27,10 @@ xmlhttp.onreadystatechange = function() {
 		img2.src = string;
 		console.log(img2.scr);
 		// img2.id = "imgscreenshot";
-		const side = document.querySelector("#side");
-		side.appendChild(img2);
+
+
+	side.insertBefore(img2, side.firstChild);
+
 		var formdata2 = new FormData();
 		formdata2.append('file2', string);
 		formdata2.append('login', login);
@@ -52,7 +55,7 @@ function on_creer_le_bouton(photo_bool)
 
 	screenshotButton.style.display = "inline";
 	screenshotButton.onclick = video.onclick = function() {
-	console.log(photo_bool);
+		console.log(photo_bool);
 		if (photo_bool == 1)
 		{
   			canvas.width = photo.videoWidth;

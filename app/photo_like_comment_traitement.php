@@ -29,6 +29,14 @@ else if (isset($_POST['like-submit']))
 	header("Location: ".$_SERVER['HTTP_REFERER']."");
 	exit;
 }
+else if (isset($_POST['submit-sup']))
+{
+	$conn = connection_bdd();
+	sup_photo($conn, $_POST['id_photo']);
+	unlink($_POST['name']);
+	echo $_POST['name'];
+	header('Location: https://37.187.109.62/my-galery');
+}
 else
 {
 	header('Location: https://37.187.109.62/sign-in');
