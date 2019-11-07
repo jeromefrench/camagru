@@ -110,9 +110,11 @@ function get_login_user($conn, $user_id)
 function get_mail_user($conn, $login)
 {
 	try {
-    	$stmt = $conn->prepare("SELECT `mail` FROM `user` WHERE `login` = '".$login."'");
+    	$stmt = $conn->prepare("SELECT `mail` FROM `user` WHERE `login` LIKE '".$login."'");
     	$stmt->execute();
 		$data = $stmt->fetchAll();
+		if ($data == false)
+			exit;
 		foreach ($data as $array)
 		{
 			return $array['mail'];
@@ -206,6 +208,8 @@ function get_photo_with_id($conn, $id)
     	$stmt = $conn->prepare("SELECT * FROM `photos` WHERE `id` = ".$id." "); 
     	$stmt->execute();
 		$data = $stmt->fetchAll();
+		if (!isset($data[0]))
+			return false;
 		return $data[0];
 	}
 	catch(PDOException $e) {
@@ -232,14 +236,10 @@ function add_comment($conn, $commentaire, $id_user, $id_photo)
 	$id_user = get_id_user_from_id_photo($conn, $id_photo);
 	$login = get_login_user($conn, $id_user);
 	$selected = get_notification($conn, $login);
-	echo "le selected";
 	echo $selected;
 	if ($selected)
 	{
-		echo "en voi mail";
-		echo $login;
 		require '../app/send_email_notification.php';
-		exit;
 	}
 }
 function add_like($conn, $id_user, $id_photo)
@@ -474,7 +474,7 @@ function update_password($conn, $login, $new_password)
 		$sql = "UPDATE `user` SET `passwd`='".$new_password."' WHERE `login` LIKE '".$login."'";
     	$stmt = $conn->prepare($sql);
     	$stmt->execute();
-    	echo $stmt->rowCount() . " records UPDATED successfully";
+    	$stmt->rowCount() . " records UPDATED successfully";
 	}
 	catch(PDOException $e)
 	{

@@ -10,6 +10,11 @@
 
 $conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 $id_user = get_user_id($conn, $_SESSION['login']);
+if ($id_user = false)
+{
+	header('Location: http://localhost:8080/');
+	exit;
+}
 $nbr_photo = get_nbr_photo_for_the_user($conn, $id_user);
 $nbr_photo_page = 9;
 $nbr_page = ($nbr_photo / $nbr_photo_page) + 1;
@@ -19,6 +24,9 @@ else
 	$current_page = 1;
 $photo_first = ($current_page - 1) * $nbr_photo_page;
 $photos = get_photo_for_page_for_user($conn, $photo_first, $nbr_photo_page, $id_user);
+
+if ($photos == null || $photos == false)
+	header('Location: http://localhost:8080/home');
 
 foreach ($photos as $photo) { ?>
 	<a href="/galery/photo/<?= $photo['id'];?>"><img src="/<?= $photo['name']?>"/></a>
