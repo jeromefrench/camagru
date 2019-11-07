@@ -7,7 +7,7 @@ $login = $_POST['login'];
 $data = serialize($_POST);
 /* echo $data; */
 
-$conn = connection_bdd();
+$conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 $user_id = get_user_id($conn, $login);
 
 

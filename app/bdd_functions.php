@@ -1,23 +1,7 @@
 <?php
-function connection_bdd()
-{
-	$servername = "localhost";
-	$username = "root";
-	$password = "rootpasswd";
-	$dbname = "camagru";
 
-	try {
-    	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    	// set the PDO error mode to exception
-    	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    	/* echo "Connected successfully"; */
-    }
-	catch(PDOException $e)
-    {
-    	echo "Connection failed: " . $e->getMessage();
-     }
-	return $conn;
-}
+include_once '../config/database.php';
+
 
 function is_login_exist($conn, $login)
 {

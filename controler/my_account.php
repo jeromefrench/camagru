@@ -4,7 +4,7 @@
 
 
 <?php
-$conn = connection_bdd();
+$conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 $mail = get_mail_user($conn, $login);
 $selected = get_notification($conn, $login);
 ?>

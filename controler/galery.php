@@ -6,7 +6,7 @@
 <div id="galery">
 
 <?php
-$conn = connection_bdd();
+$conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 $nbr_photo = get_nbr_of_photo($conn);
 $nbr_photo_page = 9;
 $nbr_page = ($nbr_photo / $nbr_photo_page) + 1;

@@ -1,7 +1,7 @@
 <?php
 require_once '../app/bdd_functions.php';
 require '../vue/header.php';
-$conn = connection_bdd();
+$conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 
 if (!isset($_POST['submit']))
 {

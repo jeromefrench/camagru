@@ -8,7 +8,7 @@
 
 <?php
 
-$conn = connection_bdd();
+$conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 $id_user = get_user_id($conn, $_SESSION['login']);
 $nbr_photo = get_nbr_photo_for_the_user($conn, $id_user);
 $nbr_photo_page = 9;

@@ -19,7 +19,7 @@ else
 	{
 		$login = htmlspecialchars($_POST['login']);
 		$mail = htmlspecialchars($_POST['mail']);
-		$conn = connection_bdd();
+		$conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 		is_login_and_mail_match($conn, $login, $mail);
 		{
 			require '../app/send_email_new_passwd.php';

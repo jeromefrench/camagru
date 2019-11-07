@@ -1,7 +1,7 @@
 <?php require '../vue/header.php';  ?>
 <?php require_once '../app/bdd_functions.php';?>
 <?php
-$conn = connection_bdd();
+$conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 $photo = get_photo_with_id($conn, $match_route->_id);
 ?>
 
@@ -21,7 +21,7 @@ echo get_number_of_like($conn, $match_route->_id)." Like";
 
 <?php
 //on affiche les commentaire
-$conn = connection_bdd();
+$conn = connection_bdd($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME);
 $commentaires = get_the_commentaires($conn, $match_route->_id);
 
 foreach ($commentaires as $commentaire)
