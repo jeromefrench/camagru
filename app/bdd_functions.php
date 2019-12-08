@@ -44,7 +44,7 @@ function add_new_user($conn, $user){
 
 try {
     $sql = "INSERT INTO user (login, mail, passwd, notif)
-    VALUES ('{$user['login']}', '{$user['mail']}', '{$user['passwd']}'), '1'";
+    VALUES ('{$user['login']}', '{$user['mail']}', '{$user['passwd']}', '1')";
     $conn->exec($sql);
     echo "New record created successfully";
     }
