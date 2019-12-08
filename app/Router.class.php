@@ -1,5 +1,4 @@
 <?php
-
 class Router {
 	public $_routes = [];
 	public $_uri;
@@ -17,9 +16,7 @@ class Router {
 	}
 
 	public function run(){
-		foreach ($this->_routes as $route)
-		{
-			/* print $route; */
+		foreach ($this->_routes as $route) {
 			$result = $route->match($this->_uri);
 			if ($result != false)
 				return $route;

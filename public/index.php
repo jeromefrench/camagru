@@ -11,14 +11,10 @@ if ($uri == "/sign_up_traitement.php")
 {
 	/* require "../app/sign_up_traitement.php"; */
 }
-else if ($uri == "/sign_in_traitement.php")
-{
-	require "../app/sign_in_traitement.php";
-}
-else if ($uri == "/sign-out")
-{
-	require '../app/sign_out.php';
-}
+/* else if ($uri == "/sign_in_traitement.php") */
+/* { */
+	/* require "../app/sign_in_traitement.php"; */
+/* } */
 else if ($uri == "/photo_like_comment_traitement.php")
 {
 	require '../app/photo_like_comment_traitement.php';
@@ -50,17 +46,15 @@ $router->map('GET','/montage', "montage", "Montage");
 $router->map('GET','/confirmation', "confirmation_user", "Confirm Account");
 $router->map('GET','/new-password-request', "new_password_request", "New password");
 $router->map('GET','/changement-password', "changement_password", "New password");
+$router->map('GET','/sign-out', "sign_out", "Sign Out");
 
 /* $router->map('GET','/my-galery/[i:id]', "galery"); //methode, path, target */
 
 $match_route = $router->run();
 
-if ($match_route != false)
-{
+if ($match_route != false) {
 		require "../controler/{$match_route->_target}.php";
-}
-else
-{
+} else {
 	echo "404 error";
 }
 
