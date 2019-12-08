@@ -7,16 +7,13 @@ $numero_unique = $match_route->_id;
 $conn = connection_bdd();
 $data = get_user_confirmation($conn, $numero_unique);
 
-if (isset($data[0]))
+if (isset($data[0])){
 	$data = $data[0];
-
-
-if ($data === false)
-{
-	//header('Location: https://localhost:8080/');
 }
-else if ($data['login'] == $login )
-{
+
+if ($data === false) {
+	header('Location: '.$fullDomain);
+} else if ($data['login'] == $login ) {
 	$user = [];
 	$user['login'] = $data['login'];
 	$user['mail'] = $data['mail'];
@@ -24,10 +21,8 @@ else if ($data['login'] == $login )
 	add_new_user($conn, $user);
 	$_SESSION['logon'] = true;
 	$_SESSION['login'] = $login;
-	//header('Location: https://localhost:8080/');
-}
-else
-{
-	//header('Location: https://localhost:8080/');
+	header('Location: '.$fullDomain);
+} else {
+	header('Location: '.$fullDomain);
 }
 ?>

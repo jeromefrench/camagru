@@ -4,7 +4,7 @@ require_once 'bdd_functions.php';
 
 if ($_SESSION['logon'] != true)
 {
-	header('Location: https://localhost:8080/sign-in');
+	header('Location: '.$fullDomain.'/sign-in');
 	exit;
 }
 
@@ -35,11 +35,11 @@ else if (isset($_POST['submit-sup']))
 	sup_photo($conn, htmlspecialchars($_POST['id_photo']));
 	unlink(htmlspecialchars($_POST['name']));
 	echo htmlspecialchars($_POST['name']);
-	header('Location: https://localhost:8080/my-galery');
+	header('Location: '.$fullDomain.'/my-galery');
 }
 else
 {
-	header('Location: https://localhost:8080/sign-in');
+	header('Location: '.$fullDomain.'/sign-in');
 	exit;
 }
 

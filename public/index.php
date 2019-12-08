@@ -1,4 +1,9 @@
 <?php
+$domainName = "https://localhost";
+$port = ":8443";
+$fullDomain = $domainName.$port;
+
+
 $uri = $_SERVER['REQUEST_URI'];
 
 

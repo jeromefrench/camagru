@@ -1,6 +1,6 @@
 <?php
 $numero = rand(0, 1000000);
-$domain_name = "http://localhost:8080";
+$domain_name = $fullDomain;
 $page = "confirmation";
 $corp = $domain_name."/".$page."/".$login."/".$numero;
 
