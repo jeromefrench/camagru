@@ -1,15 +1,15 @@
-<?php  if($_SERVER["REQUEST_METHOD"] == "GET"){
-require '../vue/header.php';
-require '../vue/sign_in.html';
-require '../vue/footer.php';
+<?php
 
-}else{
+if($method == "GET"){
+	require '../vue/header.php';
+	require '../vue/sign_in.html';
+	require '../vue/footer.php';
+}else if ($method == "POST"){
 	session_start();
 	require_once '../app/bdd_functions.php';
 	$login = htmlspecialchars($_POST['login']);
 	$passwd = htmlspecialchars($_POST['passwd']);
 	$conn = connection_bdd();
-
 	if (!is_login_exist($conn, $login)) {
 		header('Location: '.$fullDomain.'/sign-in');
 		exit;
@@ -23,6 +23,8 @@ require '../vue/footer.php';
 	$_SESSION['login'] = $login;
 	header('Location: '.$fullDomain);
 	exit;
+} else {
+	echo "404 error";
 }
 
 ?>

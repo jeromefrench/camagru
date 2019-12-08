@@ -8,8 +8,7 @@ if ($_SESSION['logon'] != true)
 	exit;
 }
 
-if (isset($_POST['comment-submit']))
-{
+if (isset($_POST['comment-submit'])) {
 	//on ajoute le commentaire dans la base de donne
 	$conn = connection_bdd();
 	echo $commentaire = htmlspecialchars($_POST['comment']);
@@ -18,9 +17,7 @@ if (isset($_POST['comment-submit']))
 	add_comment($conn, $commentaire, $id_user, $id_photo);
 	header("Location: ".$_SERVER['HTTP_REFERER']."");
 	exit;
-}
-else if (isset($_POST['like-submit']))
-{
+} else if (isset($_POST['like-submit'])) {
 	//on ajoute le like dans la base de donne
 	$conn = connection_bdd();
 	$id_user = get_user_id($conn, $_SESSION['login']);
@@ -28,9 +25,7 @@ else if (isset($_POST['like-submit']))
 	add_like($conn, $id_user, $id_photo);
 	header("Location: ".$_SERVER['HTTP_REFERER']."");
 	exit;
-}
-else if (isset($_POST['submit-sup']))
-{
+} else if (isset($_POST['submit-sup'])) {
 	$conn = connection_bdd();
 	sup_photo($conn, htmlspecialchars($_POST['id_photo']));
 	unlink(htmlspecialchars($_POST['name']));

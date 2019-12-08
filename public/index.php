@@ -3,19 +3,11 @@ $domainName = "https://localhost";
 $port = ":8443";
 $fullDomain = $domainName.$port;
 
-
 $uri = $_SERVER['REQUEST_URI'];
+$method = $_SERVER["REQUEST_METHOD"];
 
 
-if ($uri == "/sign_up_traitement.php")
-{
-	/* require "../app/sign_up_traitement.php"; */
-}
-/* else if ($uri == "/sign_in_traitement.php") */
-/* { */
-	/* require "../app/sign_in_traitement.php"; */
-/* } */
-else if ($uri == "/photo_like_comment_traitement.php")
+if ($uri == "/photo_like_comment_traitement.php")
 {
 	require '../app/photo_like_comment_traitement.php';
 }
