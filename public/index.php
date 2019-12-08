@@ -7,11 +7,7 @@ $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER["REQUEST_METHOD"];
 
 
-if ($uri == "/photo_like_comment_traitement.php")
-{
-	require '../app/photo_like_comment_traitement.php';
-}
-else if ($uri == "/my_account_traitement.php")
+if ($uri == "/my_account_traitement.php")
 {
 	require '../app/my_account_traitement.php';
 }
