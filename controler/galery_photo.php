@@ -1,4 +1,4 @@
-<?php 
+<?php
 if ($method == "POST"){
 	session_start();
 	require_once '../app/bdd_functions.php';
@@ -31,7 +31,6 @@ if ($method == "POST"){
 		exit;
 	}
 }else if ($method == "GET"){
-
 	require '../vue/header.php';
 	require_once '../app/bdd_functions.php';
 	$conn = connection_bdd();

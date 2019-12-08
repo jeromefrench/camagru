@@ -4,23 +4,11 @@ $port = ":8443";
 $fullDomain = $domainName.$port;
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER["REQUEST_METHOD"];
-
-
 //faire middleware protection
 //require '../app/restricted_to_logon.php';
-
-/* if ($uri == "/my_account_traitement.php") */
-/* { */
-	/* require '../app/my_account_traitement.php'; */
-/* } */
-
 require_once '../app/Route.class.php';
 require_once '../app/Router.class.php';
-
-$uri = $_SERVER['REQUEST_URI'];
 $router = new Router($uri);
-
-
 $router->map('GET','', "galery", "Home"); //methode, path, target name
 $router->map('GET','/', "galery", "Home");
 $router->map('GET','/home', "galery", "Home");
@@ -37,9 +25,7 @@ $router->map('GET','/confirmation', "confirmation_user", "Confirm Account");
 $router->map('GET','/new-password-request', "new_password_request", "New password");
 $router->map('GET','/changement-password', "changement_password", "New password");
 $router->map('GET','/sign-out', "sign_out", "Sign Out");
-
 $match_route = $router->run();
-
 if ($match_route != false) {
 		require "../controler/{$match_route->_target}.php";
 } else {
