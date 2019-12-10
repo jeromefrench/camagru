@@ -1,5 +1,19 @@
 <?php
-if ($method == "POST"){
+
+if ($method == "GET"){
+	require_once '../app/bdd_functions.php';
+	$conn = connection_bdd();
+	$photo = get_photo_with_id($conn, $match_route->_id);
+	$number_of_like = get_number_of_like($conn, $match_route->_id);
+	$commentaires = get_the_commentaires($conn, $match_route->_id);
+	$id_login = get_user_id($conn, $login);
+
+	require '../vue/header.php';
+	require '../vue/galery_photo.php';
+	require '../vue/footer.php';
+
+}else if ($method == "POST"){
+
 	require_once '../app/bdd_functions.php';
 	if (isset($_POST['comment-submit'])) {
 		//on ajoute le commentaire dans la base de donne
@@ -29,48 +43,13 @@ if ($method == "POST"){
 		header("Location: ".$_SERVER['HTTP_REFERER']."");
 		exit;
 	}
-}else if ($method == "GET"){
-	require '../vue/header.php';
-	require_once '../app/bdd_functions.php';
-	$conn = connection_bdd();
-	$photo = get_photo_with_id($conn, $match_route->_id);
-	$number_of_like = get_number_of_like($conn, $match_route->_id);
-	$commentaires = get_the_commentaires($conn, $match_route->_id);
-	$id_login = get_user_id($conn, $login);
-?>
 
-<div id="photo">
-	<form method="post" action="/galery/photo">
-		<img src="/<?= $photo['name'];?>"/></br>
-		<div id="nbr_like">
-			<?= $number_of_like; ?>Like
-		</div>
-		<div id="like">
-			<input  type="submit" name="like-submit" value="I like-it !">
-		</div>
-<?php 
-	foreach ($commentaires as $commentaire) {
-		$login_comment = get_login_user($conn, $commentaire['id_user'])
-?>
-		<p class="commentaire">
-			<?= $login_comment ;?>:</br>
-			<?= $commentaire['commentaire'] ;?></br>
-		</p>
-<?php } ?>
-		<p id="comment">
-			<?php if($id_login == $photo['id_user'] ) { echo '<input type="submit" name="submit-sup" value="supprimer">'; } ?>
-			<input type="hidden" name="id_photo" value="<?= $match_route->_id;?>">
-			<input type="hidden" name="name" value="<?= $photo['name'];?>">
-			<div class="to_center" >
-				<input id="comment_input" type="text" name="comment"></br>
-				<input type="submit" name="comment-submit" value="Publier commentaire">
-			</div>
-		</p>
-	</form>
-</div>
-
-<?php require '../vue/footer.php';
 }else{
 	echo "404 error";
 }
 ?>
+
+
+
+
+
