@@ -1,36 +1,49 @@
 <?php
-require_once '../app/bdd_functions.php';
-require '../vue/header.php';
-$conn = connection_bdd();
 
-if (!isset($_POST['submit'])) {
+
+if($method == "GET"){
+	require '../vue/header.php';
 	require '../vue/sign_up_form.html';
+	require '../vue/footer.php';
 }
-else {
+}else if ($method == "POST"){
+	require_once '../app/bdd_functions.php';
+	$conn = connection_bdd();
+
+
 	$login = htmlspecialchars($_POST['login']);
 	$mail = htmlspecialchars($_POST['mail']);
 	$passwd = htmlspecialchars($_POST['passwd']);
-	if ($login == null || $mail == null || $passwd == null) {
-		require '../vue/une_information_manque.html';
-		require '../vue/sign_up_form.php';
+
+	if ($login == null || $mail == null || $passwd == null ) {
+		$_SESSION['answer']['information_missing'] = true;
+		header("Location: ".$_SERVER['HTTP_REFERER']."");
+		exit();
+	}
+	else if ($login == "" || $mail == "" || $passwd == "" ) {
+		$_SESSION['answer']['information_missing'] = true;
+		header("Location: ".$_SERVER['HTTP_REFERER']."");
+		exit();
+	}
+	else if (is_login_exist($conn, $login)) {
+		$_SESSION['answer']['login_already_taken'] = true;
+		header("Location: ".$_SERVER['HTTP_REFERER']."");
+		exit();
 	}
 	else {
-		if (is_login_exist($conn, $login)) {
-			require '../vue/login_deja_pris.php';
-			require '../vue/sign_up_form.php';
-			require '../vue/footer';
-		}
-		else {
-			require '../vue/email_confirmation.php';
-			require '../app/send_email_confirmation.php';
-			$user = [];
-			$user['login'] = $login;
-			$user['mail'] = $mail;
-			$user['passwd'] = hash("sha256", $passwd);
-			$user['numero_unique'] = $numero;
-			add_new_user_confirmation($conn, $user);
-		}
+		$user = [];
+		$user['login'] = $login;
+		$user['mail'] = $mail;
+		$user['passwd'] = hash("sha256", $passwd);
+		$user['numero_unique'] = $numero;
+		add_new_user_confirmation($conn, $user);
+		require '../app/send_email_confirmation.php';
+		$_SESSION['answer']['confirm_email'] = true;
+		header('Location: '.$fullDomain);
+		exit();
 	}
 }
-require '../vue/footer.php';
+else {
+	echo "404 error";
+}
 ?>

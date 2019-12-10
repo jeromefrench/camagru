@@ -43,7 +43,6 @@ if ($restricted_area == false){
 }
 else{
 	if (isset($_SESSION['logon']) && $_SESSION['logon'] == true){
-
 		//pas de probleme
 		$uri = $uri;
 	}
@@ -51,13 +50,12 @@ else{
 		//on redirige
 		//header('Location: '.$fullDomain);
 		echo "restricted";
-		//redirection et notification
-		var_dump($_SESSION);
+		$_SESSION['answer']['restricted'] = true;
+		header("Location: ".$_SERVER['HTTP_REFERER']."");
 		$restricted = true;
 		exit();
 	}
 }
-
 if ($restricted == true){
 	exit();
 }
