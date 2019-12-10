@@ -9,12 +9,12 @@ if($method == "GET"){
 	require_once '../app/bdd_functions.php';
 	$login = htmlspecialchars($_POST['login']);
 	$passwd = htmlspecialchars($_POST['passwd']);
+	$passwd = hash("sha256", $passwd);
 	$conn = connection_bdd();
 	if (!is_login_exist($conn, $login)) {
 		header('Location: '.$fullDomain.'/sign-in');
 		exit;
 	}
-	$conn = connection_bdd();
 	if (!is_login_and_password_match($conn, $login, $passwd)) {
 		header('Location: '.$fullDomain.'/sign-in');
 		exit;

@@ -4,8 +4,45 @@ $port = ":8443";
 $fullDomain = $domainName.$port;
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER["REQUEST_METHOD"];
-//faire middleware protection
+
+
+//************restricted*******************************************************
+if ($uri == "/home" ||
+$uri == "/" ||
+$uri == "/sign-up" ||
+$uri == "/sign-in" ||
+$uri == "/new-password-request" ||
+$uri == "/galery" ||
+preg_match('/^\/galery\/[0-9]+/i', $uri,  $match) == 1 ||
+preg_match('/^\/changement-password\//i', $uri,  $match) == 1 ||
+preg_match('/^confirmation\//i', $uri,  $match) == 1 ||
+$uri == "/contact-us"){
+	$restricted_area = false;
+}
+else{
+	$restricted_area = true;
+}
+
+
+if ($restricted_area == false){
+	//pas de probleme
+	$uri = $uri;
+}
+else{
+	if (isset($_SESSION['logon']) && $_SESSION['logon'] == true){
+		//pas de probleme
+		$uri = $uri;
+	}
+	else{
+		//on redirige
+		header('Location: '.$fullDomain);
+	}
+}
 //require '../app/restricted_to_logon.php';
+//************restricted*******************************************************
+
+
+//faire middleware protection
 require_once '../app/Route.class.php';
 require_once '../app/Router.class.php';
 $router = new Router($uri);

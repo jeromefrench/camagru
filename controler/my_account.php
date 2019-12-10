@@ -25,14 +25,13 @@ if ($method == "POST"){
 		exit;
 	} else if (isset($_POST['submit']) && $_POST['submit'] == "I change my password") {
 		$new_passwd1 = htmlspecialchars($_POST['passwd1']);
-		//echo $new_passwd1;
 		$new_passwd2 = htmlspecialchars($_POST['passwd2']);
-		//echo $new_passwd2;
 		if (($new_passwd2 != $new_passwd1) || $new_passwd1 === "" ) {
 		header("Location: ".$_SERVER['HTTP_REFERER']."");
 			exit;
 		} else {
-			update_passwd($conn, $login, $new_passwd1);
+			$passwd = hash("sha256", $new_passwd1);
+			update_passwd($conn, $login, $passwd);
 		}
 		header("Location: ".$_SERVER['HTTP_REFERER']."");
 		exit;

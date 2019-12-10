@@ -5,12 +5,10 @@ $conn = connection_bdd();
 $login = $match_route->_slug;
 $numero = $match_route->_id;
 
-if (!isset($_POST['submit']))
-{
+if (!isset($_POST['submit'])) {
 	require '../vue/new_password_form.php';
 }
-else
-{
+else {
 	$passwd1 = htmlspecialchars($_POST['passwd1']);
 	$passwd2 = htmlspecialchars($_POST['passwd2']);
 	$numero = htmlspecialchars($_POST['numero']);
@@ -19,7 +17,8 @@ else
 		&& $passwd1 === $passwd2
 		&& $passwd2 != null)
 	{
-		update_password($conn, $login, $passwd1);
+		$passwd = hash("sha256", $passwd1);
+		update_password($conn, $login, $passwd);
 		echo "<p>Le password a ete change</p>";
 	}
 }
