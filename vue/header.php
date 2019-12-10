@@ -6,7 +6,7 @@
 	</head>
 	<body>
 <div id="header">
-		<a id="logo" href="/home"><img src="/img/logo.png" ></a>
+		<a id="logo" href="/"><img src="/img/logo.png" ></a>
 		<ul id="nav">
 			<li><a href="/galery">Galery</a></li>
 			<li><a href="/my-galery">My galery</a></li>
@@ -43,3 +43,16 @@ else
 }
 ?>
 </div>
+
+<div id="notification">
+</div>
+
+<script>
+function notification(text){
+	notif = document.getElementById("notification");
+	var element = document.createElement("p");
+	element.innerHTML = text;
+	notif.appendChild(element);
+}
+</script>
+

@@ -1,19 +1,27 @@
 <?php
 session_start();
-echo "index";
-var_dump($_SESSION);
 $domainName = "https://localhost";
 $port = ":8443";
 $fullDomain = $domainName.$port;
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER["REQUEST_METHOD"];
 
+
+
+//************answer*******************************************************
+
+if (isset($_SESSION['answer'])){
+	$answer = $_SESSION['answer'];
+	unset($_SESSION['answer']);
+}
+//************answer*******************************************************
+
+
 //************restricted*******************************************************
 
 $restricted = false;
 
-if ($uri == "/home" ||
-$uri == "/" ||
+if ($uri == "/" ||
 $uri == "/sign-up" ||
 $uri == "/sign-in" ||
 $uri == "/new-password-request" ||
@@ -63,7 +71,6 @@ require_once '../app/Router.class.php';
 $router = new Router($uri);
 $router->map('GET','', "galery", "Home"); //methode, path, target name
 $router->map('GET','/', "galery", "Home");
-$router->map('GET','/home', "galery", "Home");
 $router->map('GET','/contact-us', "contact", "Contact");
 $router->map('GET','/sign-up', "sign_up", "Sign-Up");
 $router->map('GET','/sign-in', "sign_in", "Sign-In");

@@ -1,4 +1,5 @@
 <?php
 $_SESSION['logon'] = false;
-header('Location: '.$fullDomain.'/home');
+$_SESSION['answer']['log_out_sucessfull'] = true;
+header('Location: '.$fullDomain);
 ?>
