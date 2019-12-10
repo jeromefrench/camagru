@@ -1,12 +1,17 @@
 <?php
+session_start();
+echo "index";
+var_dump($_SESSION);
 $domainName = "https://localhost";
 $port = ":8443";
 $fullDomain = $domainName.$port;
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER["REQUEST_METHOD"];
 
-
 //************restricted*******************************************************
+
+$restricted = false;
+
 if ($uri == "/home" ||
 $uri == "/" ||
 $uri == "/sign-up" ||
@@ -14,8 +19,8 @@ $uri == "/sign-in" ||
 $uri == "/new-password-request" ||
 $uri == "/galery" ||
 preg_match('/^\/galery\/[0-9]+/i', $uri,  $match) == 1 ||
-preg_match('/^\/changement-password\//i', $uri,  $match) == 1 ||
-preg_match('/^confirmation\//i', $uri,  $match) == 1 ||
+preg_match('/^\/changement-password/i', $uri,  $match) == 1 ||
+preg_match('/^\/confirmation\//i', $uri,  $match) == 1 ||
 $uri == "/contact-us"){
 	$restricted_area = false;
 }
@@ -30,14 +35,24 @@ if ($restricted_area == false){
 }
 else{
 	if (isset($_SESSION['logon']) && $_SESSION['logon'] == true){
+
 		//pas de probleme
 		$uri = $uri;
 	}
 	else{
 		//on redirige
-		header('Location: '.$fullDomain);
+		//header('Location: '.$fullDomain);
+		echo "restricted";
+		var_dump($_SESSION);
+		$restricted = true;
+		exit();
 	}
 }
+
+if ($restricted == true){
+	exit();
+}
+
 //require '../app/restricted_to_logon.php';
 //************restricted*******************************************************
 

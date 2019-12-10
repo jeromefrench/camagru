@@ -1,7 +1,6 @@
 <?php
 
 if ($method == "POST"){
-	session_start();
 	require_once '../app/bdd_functions.php';
 	$login = $_SESSION['login'];
 

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../app/bdd_functions.php';
 
 $login = $match_route->_slug;
@@ -13,7 +12,7 @@ if (isset($data[0])){
 
 if ($data === false) {
 	header('Location: '.$fullDomain);
-} else if ($data['login'] == $login ) {
+} else if (isset($data['login']) && $data['login'] == $login ) {
 	$user = [];
 	$user['login'] = $data['login'];
 	$user['mail'] = $data['mail'];

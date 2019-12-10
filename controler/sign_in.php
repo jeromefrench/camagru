@@ -5,7 +5,6 @@ if($method == "GET"){
 	require '../vue/sign_in.html';
 	require '../vue/footer.php';
 }else if ($method == "POST"){
-	session_start();
 	require_once '../app/bdd_functions.php';
 	$login = htmlspecialchars($_POST['login']);
 	$passwd = htmlspecialchars($_POST['passwd']);

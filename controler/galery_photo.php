@@ -1,6 +1,5 @@
 <?php
 if ($method == "POST"){
-	session_start();
 	require_once '../app/bdd_functions.php';
 	if (isset($_POST['comment-submit'])) {
 		//on ajoute le commentaire dans la base de donne
