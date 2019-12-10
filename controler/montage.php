@@ -1,12 +1,16 @@
-<?php require '../vue/header.php';?>
-<?php require '../app/restricted_to_logon.php';?>
+<?php
+require '../vue/header.php';
+require '../app/restricted_to_logon.php';
+
+?>
 
 <script type="text/javascript" > var login = '<?php echo $login; ?>'; </script>
 <script src="montage_script.js"></script>
 
-<?php include '../vue/my_galery.php'?>
-
 <?php
+
+include '../vue/my_galery.php';
+
 
 if (isset($_FILES['myFile'])) {
 	var_dump($_FILES['myFile']);
