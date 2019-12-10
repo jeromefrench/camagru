@@ -40,4 +40,7 @@ else if (isset($answer) && isset($answer['false_link'])){
 else if (isset($answer) && isset($answer['passwd_change'])){
 	notification("Votre mot de passe a ete changer");
 }
+else if (isset($answer) && isset($answer['send_link'])){
+	notification("Un lien permetant de modifier votre mot de passe vient de vous etre envoyer sur votre adresse mail");
+}
 ?>

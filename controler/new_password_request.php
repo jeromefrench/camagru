@@ -1,16 +1,16 @@
 <?php
 
-require '../vue/header.php';
-require '../app/bdd_functions.php';
-
-
-if (!isset($_POST['submit'])) {
+if($method == "GET"){
+	require '../vue/header.php';
 	require '../vue/new_password_form_requested.html';
+	require '../vue/footer.php';
 }
-else {
+else if ($method == "POST"){
+	require '../app/bdd_functions.php';
 	if ($_POST['login'] == "" || $_POST['mail'] == "") {
-		echo "<p>Il manque des informations</p>";
-		require '../vue/new_password_form_requested.html';
+		$_SESSION['answer']['information_missing'] = true;
+		header("Location: ".$_SERVER['HTTP_REFERER']."");
+		exit;
 	}
 	else {
 		$login = htmlspecialchars($_POST['login']);
@@ -18,11 +18,14 @@ else {
 		$conn = connection_bdd();
 		if (is_login_and_mail_match($conn, $login, $mail)) {
 			require '../app/send_email_new_passwd.php';
-			echo "<p>Un lien vous a ete envoye</p>";
+			$_SESSION['answer']['send_link'] = true;
+			header("Location: ".$_SERVER['HTTP_REFERER']."");
+			exit;
 		}
 	}
 }
-
-require '../vue/footer.php';
+else {
+	echo "404 error";
+}
 
 ?>
