@@ -1,5 +1,13 @@
-<?php require '../vue/header.php';?>
+<?php
 
-<h1>Page Contact Us</h1>
+if($method == "GET"){
+	require '../vue/header.php';
+	require '../vue/contact.html';
+	require '../vue/footer.php';
+}
+else {
+	echo "404 error";
+}
 
-<?php require '../vue/footer.php'; ?>
+
+?>

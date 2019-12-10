@@ -1,4 +1,3 @@
-
 <?php
 
 require '../vue/header.php';
