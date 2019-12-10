@@ -1,5 +1,4 @@
 <?php require '../vue/header.php';?>
-<?php require '../app/restricted_to_logon.php';?>
 <?php require_once '../app/bdd_functions.php';?>
 
 <h1>My galery</h1>

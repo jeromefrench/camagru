@@ -51,6 +51,7 @@ else{
 		//on redirige
 		//header('Location: '.$fullDomain);
 		echo "restricted";
+		//redirection et notification
 		var_dump($_SESSION);
 		$restricted = true;
 		exit();
@@ -61,7 +62,6 @@ if ($restricted == true){
 	exit();
 }
 
-//require '../app/restricted_to_logon.php';
 //************restricted*******************************************************
 
 

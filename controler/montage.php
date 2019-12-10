@@ -1,6 +1,5 @@
 <?php
 require '../vue/header.php';
-require '../app/restricted_to_logon.php';
 
 ?>
 
