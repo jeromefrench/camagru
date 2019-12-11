@@ -132,15 +132,15 @@ li{
 #footer a{
 	color:white;
 }
-.form{
-	border:solid 2px black;
-	margin-left:auto;
-	margin-right:auto;
-	width:400px;
-}
-.form  p{
-	margin-left:20px;
-}
+/* .form{ */
+/* 	border:solid 2px black; */
+/* 	margin-left:auto; */
+/* 	margin-right:auto; */
+/* 	width:400px; */
+/* } */
+/* .form  p{ */
+/* 	margin-left:20px; */
+/* } */
 #galery img{
 	height:150px;
 	width:225px;
@@ -163,11 +163,11 @@ li{
 #pagination .current_page{
 	font-size:30px;
 }
-body{
-	width:920px;
-	margin-left:auto;
-	margin-right:auto;
-}
+/* body{ */
+/* 	width:920px; */
+/* 	margin-left:auto; */
+/* 	margin-right:auto; */
+/* } */
 #new_passwd{
 	display:inline-block;
 	margin-left:170px;

@@ -8,6 +8,25 @@ $method = $_SERVER["REQUEST_METHOD"];
 
 
 
+
+if (isset($_SESSION['logon']) && $_SESSION['logon'] == true) {
+	$auth = true;
+	$login = $_SESSION['login'];
+}
+else {
+	$auth = false;
+	$login = null;
+}
+
+
+
+
+
+
+
+
+
+
 //************answer*******************************************************
 
 if (isset($_SESSION['answer'])){

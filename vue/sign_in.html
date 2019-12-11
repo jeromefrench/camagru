@@ -1,10 +1,44 @@
-<h1>Sign-In</h1>
 
-<div class="form">
-	<form method="post" action="/sign-in" >
-		<p>Login :</br> <input type="text" name="login"></p>
-		<p>Password :</br><input type="password" name="passwd"></p>
-		<p id="passwda"><input type="submit" name="submit" value="Sign-In"></p>
-		<p id="new_passwd"><a href="/new-password-request">Mot de passe oublie</a></p>
-	</form>
-</div>
+<section   class="section">
+
+	<h1 class="title">Sign-In</h1>
+
+
+	<div class="container">
+		<div class="columns">
+
+			<div class="column"></div>
+			<div class="column is-one-quarter">
+				<div class="form">
+					<form method="post" action="/sign-in" >
+						<div class="field">
+							<label class="label">Identifiant</label>
+							<div class="control">
+								<input class="input" type="text" name="login"  placeholder="Identifiant">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Mot de passe</label>
+							<div class="control">
+								<input class="input" type="password" name="passwd"  placeholder="Mot de passe">
+							</div>
+						</div>
+						<div class="control">
+							<button class="button is-link">Submit</button>
+						</div>
+						<a class="is-size-7" href="/new-password-request">Mot de passe oublie</a>
+					</form>
+				</div>
+			</div>
+			<div class="column"></div>
+		</div>
+	</div>
+
+
+	</div>
+
+	<!-- <p>Password :</br><input type="password" name="passwd"></p> -->
+
+	<!-- <p id="passwda"><input type="submit" name="submit" value="Sign-In"></p> -->
+
+	<!-- <p>Login :</br> <input type="text" name="login"></p> -->
