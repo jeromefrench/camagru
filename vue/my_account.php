@@ -18,7 +18,7 @@
 	<p>Notification :</br>
 	<select name="notification">
     <option value="1" <?php if ($selected == '1') { echo "selected"; } ?> >Get me notified</option>
-	<option value="0" <?php if ($selected == '0') { echo "selected"; } ?> >I don't want notifiacation</option>
+	<option value="0" <?php if ($selected == '0') { echo "selected"; } ?> >I don't want notification</option>
   	  </select></br>
 	<input type="submit" name="submit" value="I change notification"></br>
 	</p>

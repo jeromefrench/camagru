@@ -12,6 +12,6 @@
 			echo 	'<li><a href="/galery/'.($current_page - 1).'" >Precedent</a></li>'; }?>
 					<li class="current_page"><?= $current_page ;?></li>
 			<?php if (($current_page + 1) <= $nbr_page){
-			echo	'<li><a href="/galery/'.($current_page + 1).'">Suivant</a></li>'; ?>
-</ul>
+			echo	'<li><a href="/galery/'.($current_page + 1).'">Suivant</a></li>'; }?>
+	</ul>
 </div>

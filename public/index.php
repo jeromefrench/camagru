@@ -48,10 +48,12 @@ else{
 	}
 	else{
 		//on redirige
-		//header('Location: '.$fullDomain);
-		echo "restricted";
 		$_SESSION['answer']['restricted'] = true;
-		header("Location: ".$_SERVER['HTTP_REFERER']."");
+		if (isset($_SERVER['HTTP_REFERER'])){
+			header("Location: ".$_SERVER['HTTP_REFERER']."");
+		}else{
+			header('Location: '.$fullDomain);
+		}
 		$restricted = true;
 		exit();
 	}

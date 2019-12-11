@@ -17,7 +17,7 @@ else if (isset($answer) && isset($answer['connexion_sucessfull'])){
 	notification("Connexion reussi");
 }
 else if (isset($answer) && isset($answer['log_out_sucessfull'])){
-	notification("Decoonnexion reussi");
+	notification("Deconnexion reussi");
 }
 else if (isset($answer) && isset($answer['restricted'])){
 	notification("Cette partie est reserve au utilisateur connecte");
@@ -42,5 +42,20 @@ else if (isset($answer) && isset($answer['passwd_change'])){
 }
 else if (isset($answer) && isset($answer['send_link'])){
 	notification("Un lien permetant de modifier votre mot de passe vient de vous etre envoyer sur votre adresse mail");
+}
+else if (isset($answer) && isset($answer['wrong'])){
+	notification("Erreur : information manquante dans le post");
+}
+else if (isset($answer) && isset($answer['login_and_mail_dont_match'])){
+	notification("Login ou adresse mail erroner");
+}
+else if (isset($answer) && isset($answer['new_mail'])){
+	notification("L'adresse mail a ete changer");
+}
+else if (isset($answer) && isset($answer['new_login'])){
+	notification("Le login a ete changer");
+}
+else if (isset($answer) && isset($answer['update_notif'])){
+	notification("Notification changer");
 }
 ?>

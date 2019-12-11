@@ -7,9 +7,19 @@ if($method == "GET"){
 }
 else if ($method == "POST"){
 	require_once '../app/bdd_functions.php';
-	$login = htmlspecialchars($_POST['login']);
-	$passwd = htmlspecialchars($_POST['passwd']);
+
+	if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd'])){
+		$login = htmlspecialchars($_POST['login']);
+		$passwd = htmlspecialchars($_POST['passwd']);
+	}
+	else{
+		$_SESSION['answer']['wrong'] = true;
+		header('Location: '.$fullDomain.'/sign-in');
+		exit;
+	}
+
 	$passwd = hash("sha256", $passwd);
+
 	$conn = connection_bdd();
 	if (!is_login_exist($conn, $login)) {
 		$_SESSION['answer']['login_dont_exit'] = true;
