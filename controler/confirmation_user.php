@@ -1,11 +1,10 @@
 <?php
 
-
 if($method == "GET"){
 	require_once '../app/bdd_functions.php';
 
-	$login = $match_route->_slug;
-	$numero_unique = $match_route->_id;
+	$login = htmlspecialchars($match_route->_slug);
+	$numero_unique = htmlspecialchars($match_route->_id);
 
 	$conn = connection_bdd();
 	$data = get_user_confirmation($conn, $numero_unique);
@@ -31,11 +30,9 @@ if($method == "GET"){
 		add_new_user($conn, $user);
 		$_SESSION['logon'] = true;
 		$_SESSION['login'] = $login;
-
-
 		$_SESSION['answer']['connexion_sucessfull'] = true;
 		header('Location: '.$fullDomain);
-		exit();
+		exit;
 	}
 	else {
 		$_SESSION['answer']['false_link'] = true;

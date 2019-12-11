@@ -58,4 +58,13 @@ else if (isset($answer) && isset($answer['new_login'])){
 else if (isset($answer) && isset($answer['update_notif'])){
 	notification("Notification changer");
 }
+else if (isset($answer) && isset($answer['new_comment'])){
+	notification("Votre commentaire a bien ete ajouter");
+}
+else if (isset($answer) && isset($answer['new_like'])){
+	notification("Votre like a bien ete ajoute");
+}
+else if (isset($answer) && isset($answer['del_pic'])){
+	notification("La photo a bien ete supprimmer");
+}
 ?>

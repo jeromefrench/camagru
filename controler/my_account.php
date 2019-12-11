@@ -85,7 +85,7 @@ if ($method == "GET"){
 			$_SESSION['answer']['information_missing'] = true;
 			header('Location: '.$fullDomain.'/my-account');
 			exit;
-		} else {
+		 } else {
 			$passwd = hash("sha256", $new_passwd1);
 			update_passwd($conn, $login, $passwd);
 			$_SESSION['answer']['passwd_change'] = true;
