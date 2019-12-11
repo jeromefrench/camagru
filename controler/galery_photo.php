@@ -6,7 +6,7 @@ if ($method == "GET"){
 	$photo = get_photo_with_id($conn, $match_route->_id);
 	$number_of_like = get_number_of_like($conn, $match_route->_id);
 	$commentaires = get_the_commentaires($conn, $match_route->_id);
-	$id_login = get_user_id($conn, $login);
+	$id_login = get_user_id($conn, $_SESSION['login']);
 
 	require '../vue/header.php';
 	require '../vue/galery_photo.php';
@@ -40,6 +40,7 @@ if ($method == "GET"){
 	//************LIKE PARSING*************************************************
 	} else if (isset($_POST['like-submit'])) {
 		$id_user = get_user_id($conn, $_SESSION['login']);
+		
 		$id_photo = htmlspecialchars($match_route->_id);
 		add_like($conn, $id_user, $id_photo);
 		$_SESSION['answer']['new_like'] = true;
@@ -49,7 +50,7 @@ if ($method == "GET"){
 	} else if (isset($_POST['submit-sup'])) {
 		$id_photo = htmlspecialchars($match_route->_id);
 		$photo = get_photo_with_id($conn, $match_route->_id);
-		sup_photo($conn, $id_photo));
+		sup_photo($conn, $id_photo);
 		unlink($photo['name']);
 		$_SESSION['answer']['del_pic'] = true;
 		header('Location: '.$fullDomain.'/my-galery');

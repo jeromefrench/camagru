@@ -1,6 +1,6 @@
 
 <div id="photo">
-	<form method="post" action="/galery/photo">
+	<form method="post" action="/galery/photo/<?= $match_route->_id;?>" >
 		<img src="/<?= $photo['name'];?>"/></br>
 		<div id="nbr_like">
 			<?= $number_of_like; ?>Like
@@ -9,8 +9,8 @@
 			<input  type="submit" name="like-submit" value="I like-it !">
 		</div>
 <?php 
-	foreach ($commentaires as $commentaire) {
-		$login_comment = get_login_user($conn, $commentaire['id_user'])
+foreach ($commentaires as $commentaire) {
+	$login_comment = get_login_user($conn, $commentaire['id_user'])
 ?>
 		<p class="commentaire">
 			<?= $login_comment ;?>:</br>
