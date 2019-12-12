@@ -1,14 +1,53 @@
 
+<h1 class="title">Ma page</h1>
 
-<h1>My galery</h1>
-<div id="galery">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php foreach ($photos as $photo) { ?>
 	<a href="/galery/photo/<?= $photo['id'];?>"><img src="/<?= $photo['name']?>"/></a>
 <?php } ?>
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div id="pagination">
 <ul>

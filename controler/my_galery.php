@@ -18,7 +18,7 @@ if($method == "GET"){
 
 
 	require '../vue/header.php';
-	require '../vue/my_galery_personal.php';
+	require '../vue/galery.php';
 	require '../vue/footer.php';
 
 }

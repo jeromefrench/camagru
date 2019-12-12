@@ -2,10 +2,10 @@
 <h1 class="title">Galery</h1>
 
 <div class="columns">
-	<div class="column  is-one-fifth">
+	<div class="column  is-2">
 		First column
 	</div>
-	<div class="column  is-three-fifths     ">
+	<div class="column  is-8     ">
 		First column
 		<div class="columns  is-multiline     ">
 			<?php foreach($photos as $photo) {  ?>
@@ -21,7 +21,7 @@
 			<?php  }  ?>
 		</div>
 	</div>
-	<div class="column  is-one-fifth">
+	<div class="column  is-2">
 		Fourth column
 	</div>
 </div>
