@@ -110,6 +110,11 @@ if ($method == "GET"){
 		header('Location: '.$fullDomain.'/my-account');
 		exit;
 	}
+	else{
+			$_SESSION['answer']['wrong'] = true;
+			header('Location: '.$fullDomain.'/my-account');
+			exit;
+	}
 }
 else {
 	echo "404 error";

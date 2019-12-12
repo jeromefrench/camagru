@@ -39,6 +39,9 @@
 	</div>
 </nav>
 
+
+<section   class="section">
+
 <div id="notification">
 </div>
 
