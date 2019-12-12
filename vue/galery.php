@@ -3,10 +3,8 @@
 
 <div class="columns">
 	<div class="column  is-2">
-		First column
 	</div>
 	<div class="column  is-8     ">
-		First column
 		<div class="columns  is-multiline     ">
 			<?php foreach($photos as $photo) {  ?>
 			<div class="column  is-one-third">
@@ -22,13 +20,10 @@
 		</div>
 	</div>
 	<div class="column  is-2">
-		Fourth column
 	</div>
 </div>
 
-
 <nav class="pagination is-medium  is-centered" role="navigation" aria-label="pagination">
-
 
   <ul class="pagination-list">
 <?php if (($current_page - 1) > 0) {
@@ -40,8 +35,5 @@ echo 	'<li><a   class="pagination-previous     is-centered    "     href="/galer
 echo	'<li><a   class="pagination-next   is-centered    "    href="/galery/'.($current_page + 1).'">Suivant</a></li>'; }  ?>
 
   </ul>
-
-
-
 
 </nav>
