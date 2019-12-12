@@ -25,5 +25,5 @@ imagecopy($image_1, $image_2, 0, 0, 0, 0, 640, 480);
 $number = rand(0, 50000);
 $string = "image".$number.".png";
 imagepng($image_1, "usr_photo/".$string);
-echo "usr_photo/".$string;
+echo "usr_photo/".$string;  //NE PAS SUP
 ?>
