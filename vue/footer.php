@@ -2,8 +2,6 @@
 <?php include '../app/notification.php';?>
 
 
-
-
 </section>
 
 <footer style="padding:0.75rem;" class="footer">
