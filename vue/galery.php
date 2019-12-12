@@ -27,15 +27,21 @@
 </div>
 
 
+<nav class="pagination is-medium  is-centered" role="navigation" aria-label="pagination">
 
 
-
-<div id="pagination">
-<ul>
+  <ul class="pagination-list">
 <?php if (($current_page - 1) > 0) {
-echo 	'<li><a href="/galery/'.($current_page - 1).'" >Precedent</a></li>'; }  ?>
-<li class="current_page"><?= $current_page ;?></li>
+echo 	'<li><a   class="pagination-previous     is-centered    "     href="/galery/'.($current_page - 1).'" >Precedent</a></li>'; }  ?>
+
+<li   class="pagination-link is-current"     class="current_page"><?= $current_page ;?></li>
+
 <?php if (($current_page + 1) <= $nbr_page){
-echo	'<li><a href="/galery/'.($current_page + 1).'">Suivant</a></li>'; }  ?>
-</ul>
-</div>
+echo	'<li><a   class="pagination-next   is-centered    "    href="/galery/'.($current_page + 1).'">Suivant</a></li>'; }  ?>
+
+  </ul>
+
+
+
+
+</nav>
