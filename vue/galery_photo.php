@@ -1,28 +1,89 @@
 
-<div id="photo">
-	<form method="post" action="/galery/photo/<?= $match_route->_id;?>" >
-		<img src="/<?= $photo['name'];?>"/></br>
-		<div id="nbr_like">
-			<?= $number_of_like; ?>Like
-		</div>
-		<div id="like">
-			<input  type="submit" name="like-submit" value="I like-it !">
-		</div>
-<?php 
-foreach ($commentaires as $commentaire) {
-	$login_comment = get_login_user($conn, $commentaire['id_user'])
-?>
-		<p class="commentaire">
-			<?= $login_comment ;?>:</br>
-			<?= $commentaire['commentaire'] ;?></br>
-		</p>
-<?php } ?>
-		<p id="comment">
-			<?php if($id_login == $photo['id_user'] ) { echo '<input type="submit" name="submit-sup" value="supprimer">'; } ?>
-			<div class="to_center" >
-				<input id="comment_input" type="text" name="comment"></br>
-				<input type="submit" name="comment-submit" value="Publier commentaire">
+
+
+<div class="columns">
+	<div class="column  is-2">
+	</div>
+	<div class="column  is-8     ">
+
+		<form method="post" action="/galery/photo/<?= $match_route->_id;?>" >
+
+			<figure class="image is-4by3">
+				<img src="/<?= $photo['name'];?>"/>
+			</figure>
+
+
+		<div class="columns">
+			<div class="column">
+				<div class="container"   style="margin-top:20px;">
+					<div class="field  is-grouped ">
+						<div class="control">
+							<label class="label"><?= $number_of_like; ?> Likes</label>
+						</div>
+						<div class="control">
+							<input class="button is-link"  type="submit" name="like-submit" value="I like-it !">
+						</div>
+					</div>
+				</div>
 			</div>
-		</p>
-	</form>
+
+
+			<div class="column  is-one-fifth ">
+				<div class="container"  style="margin-top:20px;">
+					<div class="field">
+						<div class="control">
+<?php if($id_login == $photo['id_user'] ) { echo '<input class="button is-link" type="submit" name="submit-sup" value="supprimer">'; } ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+<div class="content"   style="margin-top:20px;">
+<?php foreach ($commentaires as $commentaire) {
+$login_comment = get_login_user($conn, $commentaire['id_user'])
+?>
+
+
+
+
+<p>
+<strong>	<?= $login_comment ;?>:  </strong>    </br>
+<?= $commentaire['commentaire'] ;?>
+</p>
+
+
+
+<?php } ?>
+
+
 </div>
+
+
+<textarea class="textarea" name="comment" placeholder="Ajouter un commentaire"></textarea>
+
+
+<input class="input" type="submit" name="comment-submit" value="Publier commentaire">
+
+
+
+</form>
+
+</div>
+<div class="column  is-2">
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
