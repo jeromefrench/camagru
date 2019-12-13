@@ -7,6 +7,7 @@ if($method == "GET"){
 }
 else if ($method == "POST"){
 	require_once '../app/bdd_functions.php';
+	require_once '../app/strong_passwd.php';
 	$conn = connection_bdd();
 
 	if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['passwd'])){
@@ -29,11 +30,17 @@ else if ($method == "POST"){
 		header('Location: '.$fullDomain.'/sign-up');
 		exit;
 	}
+	$ans = isPasswdStrong($passwd);
+	if ($ans !== true){
+		$_SESSION['answer']['passwdWeak'] = true;
+		$_SESSION['answer']['message'] = $ans;
+		header('Location: '.$fullDomain.'/sign-up');
+		exit;
+	}
 	$user = [];
 	$user['login'] = $login;
 	$user['mail'] = $mail;
 	$user['passwd'] = hash("sha256", $passwd);
-	//$user['numero_unique'] = $numero;
 	add_new_user_confirmation($conn, $user);
 	require '../app/send_email_confirmation.php';
 	$_SESSION['answer']['confirm_email'] = true;

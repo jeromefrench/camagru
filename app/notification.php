@@ -67,4 +67,7 @@ else if (isset($answer) && isset($answer['new_like'])){
 else if (isset($answer) && isset($answer['del_pic'])){
 	notification("La photo a bien ete supprimmer");
 }
+else if (isset($answer) && isset($answer['passwdWeak'])){
+	notification($answer['message']);
+}
 ?>

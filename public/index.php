@@ -6,9 +6,6 @@ $fullDomain = $domainName.$port;
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER["REQUEST_METHOD"];
 
-
-
-
 if (isset($_SESSION['logon']) && $_SESSION['logon'] == true) {
 	$auth = true;
 	$login = $_SESSION['login'];
@@ -18,23 +15,12 @@ else {
 	$login = null;
 }
 
-
-
-
-
-
-
-
-
-
 //************answer*******************************************************
 
 if (isset($_SESSION['answer'])){
 	$answer = $_SESSION['answer'];
 	unset($_SESSION['answer']);
 }
-//************answer*******************************************************
-
 
 //************restricted*******************************************************
 
