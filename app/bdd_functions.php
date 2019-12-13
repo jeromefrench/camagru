@@ -149,12 +149,12 @@ function insert_picture($conn, $name, $time, $id_user)
 
     	// use exec() because no results are returned
     	$conn->exec($sql);
-    	echo "New record created successfully";
+    	//echo "New record created successfully";
     }
 	catch(PDOException $e)
     {
-		echo "hello2";
-    	echo $sql . "<br>" . $e->getMessage();
+		//echo "hello2";
+    	//echo $sql . "<br>" . $e->getMessage();
     }
 }
 

@@ -1,20 +1,16 @@
 <?php
-require_once '../app/bdd_functions.php';
+//require_once '../app/bdd_functions.php';
 
-$photo_name = $_POST['file2'];
-$login = $_POST['login'];
+//$photo_name = $_POST['file2'];
+//$login = $_POST['login'];
 
-$data = serialize($_POST);
+//$data = serialize($_POST);
 /* echo $data; */
 
-$conn = connection_bdd();
-$user_id = get_user_id($conn, $login);
+//$conn = connection_bdd();
+//$user_id = get_user_id($conn, $login);
 
+//insert_picture($conn, $photo_name, "time", $user_id);
 
-insert_picture($conn, $photo_name, "time", $user_id);
-
-
-
-file_put_contents("bebechar", $data);
-
+//file_put_contents("bebechar", $data);
 ?>

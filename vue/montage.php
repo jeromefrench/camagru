@@ -38,7 +38,7 @@
 	<figure class="image">
 		<img id="picUploaded" src="/photo_upload/<?= $login ; ?>" >
 	</figure>
-	<input type="button" name="screenShot" value="Take ScreenShot" id="screenshot-button">
+	<input type="button" class="button is-link" name="screenShot" value="Take ScreenShot" id="screenshot-button">
 
 <script>
 		const screenshotButton = document.getElementById("screenshot-button");
@@ -99,7 +99,7 @@
 	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
 		var cam = document.querySelector('#cam');
 		cam.innerHTML = '<video style="margin-left: auto; margin-right: auto; display: block;" autoplay></video>';
-		cam.innerHTML += '<input type="button" name="screenShot" value="Take ScreenShot" id="screenshot-button">';
+		cam.innerHTML += '<div class="control  has-text-centered" style="margin-top:20px;"><input type="button" class="button is-link" name="screenShot" value="Take ScreenShot" id="screenshot-button"></div>';
 		var video = document.querySelector('video');
 		video.srcObject = stream;
 

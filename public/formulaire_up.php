@@ -12,7 +12,7 @@
 					</span>
 				</label>
 			</div>
-			<div class="control">
+			<div class="control  has-text-centered" style="margin-top:20px;">
 				<input  style="display:none;" class="button is-link" type="submit" name="submitOther" value="Telecharger"></br>
 			</div>
 		</form>
