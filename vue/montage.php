@@ -34,20 +34,37 @@
 
 <div id="cam">
 
+<div id="the_form">
 </div>
 
-	
+<?php if (isset($answer) && isset($answer['uploadPic']) && $answer['uploadPic'] == true){  ?>
+	<figure>
+	<img id="picUploaded" src="/photo_upload/<?= $login ; ?>" >
+	</figure>
+
+	<input type="button" name="screenShot" value="Take ScreenShot" id="screenshot-button">
+
+
+<script>
+		const screenshotButton = document.getElementById("screenshot-button");
+		const canvas = document.createElement('canvas');
+		const photo = document.getElementById("picUploaded");
+		screenshotButton.onclick = function() {
+  			canvas.width = photo.videoWidth;
+  			canvas.height = photo.videoHeight;
+  			canvas.getContext('2d').drawImage(photo, 0, 0);
+			filter = getFilterName();
+			addFilter("/photo_upload/"+login, filter, "photo");
+		}
+</script>
+
+
+
+<?php }?>
+
 </div>
 
-	<!-- <canvas style="display:none;"></canvas> -->
-	<!-- <form enctype="multipart/form-data" method="post" action=/montage> -->
-		<!-- <p style="display:none" id="get_file"> -->
-			<!-- Veuillez choisir une photo de vous</br> -->
-			<!-- <input type="file" name="myFile"></br> -->
-			<!-- <input type="submit" name="submit"> -->
-		<!-- </p> -->
-		<!-- <input style="display:none" type="button" name="screenShot" value="Take ScreenShot" id="screenshot-button"> -->
-	<!-- </form> -->
+</div>
 
 <div class="column  is-3"   style="border:solid 2px red;" >
 	<div id="side">
@@ -58,9 +75,48 @@
 
 </div>
 
-<script type="text/javascript" >
+<script type="text/javascript" > var login = '<?php echo $login; ?>'; </script>
 
+<script type="text/javascript" >
 	var xmlhttp = new XMLHttpRequest();
+	var askForm = new XMLHttpRequest();
+
+	const constraints = {
+		video: true
+	};
+
+	askForm.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var the_form_div = document.querySelector('#the_form');
+			const divElem = document.createElement("div");
+			divElem.innerHTML = this.responseText;
+			the_form_div.append(divElem);
+		}
+	}
+
+	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+		var cam = document.querySelector('#cam');
+		cam.innerHTML = '<video style="margin-left: auto; margin-right: auto; display: block;" autoplay></video>';
+		cam.innerHTML += '<input type="button" name="screenShot" value="Take ScreenShot" id="screenshot-button">';
+		var video = document.querySelector('video');
+		video.srcObject = stream;
+
+		const screenshotButton = document.getElementById("screenshot-button");
+		const canvas = document.createElement('canvas');
+
+		screenshotButton.onclick = video.onclick = function() {
+			canvas.width = video.videoWidth;
+			canvas.height = video.videoHeight;
+			canvas.getContext('2d').drawImage(video, 0, 0);
+			filter = getFilterName();
+			addFilter(canvas.toDataURL('image/png'), filter, "webcam");
+		}
+	}).catch(function(err) {
+		console.log("lutilisateur a refuser");
+		askForm.open("POST", "formulaire_up.php");
+		askForm.send();
+
+});
 
 	function getFilterName(){
 		if (document.getElementById('r1').checked) {
@@ -104,32 +160,4 @@
 		}
 	}
 
-	const constraints = {
-		video: true
-	};
-
-
-	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-		var cam = document.querySelector('#cam');
-		cam.innerHTML = '<video style="margin-left: auto; margin-right: auto; display: block;" autoplay></video>';
-		cam.innerHTML += '<input type="button" name="screenShot" value="Take ScreenShot" id="screenshot-button">';
-		var video = document.querySelector('video');
-		video.srcObject = stream;
-
-		const screenshotButton = document.querySelector('#screenshot-button');
-		const canvas = document.createElement('canvas');
-
-		screenshotButton.onclick = video.onclick = function() {
-			canvas.width = video.videoWidth;
-			canvas.height = video.videoHeight;
-			canvas.getContext('2d').drawImage(video, 0, 0);
-			filter = getFilterName();
-			addFilter(canvas.toDataURL('image/png'), filter, "webcam");
-		}
-	}).catch(function(err) {
-		console.log("lutilisateur a refuser");
-
-//ajouter le formulaire
-
-	});
 </script>
