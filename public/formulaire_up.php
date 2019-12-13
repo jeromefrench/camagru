@@ -1,12 +1,19 @@
 <div class="container">
 	<div class="form">
 		<form id="form" enctype="multipart/form-data" method="post"  action="/montage">
-			<div class="field">
-				<label class="label">Veuillez telecharger une photo</label>
-				<div class="control">
-					<input  id="file" class="input" type="file" name="myFile" placeholder="Veuillez choisir une photo">
-					<input type="submit" name="submit">
-				</div>
+			<div class="file is-boxed  has-name">
+				<label class="file-label">
+					<input  id="file" class="file-input" type="file" name="myFile">
+					<span class="file-cta">
+						<span class="file-icon">
+							<img src="./photo-icon-upload-2.png">
+						</span>
+						<span class="file-label">Telecharger une photo</span>
+					</span>
+				</label>
+			</div>
+			<div class="control">
+				<input  style="display:none;" class="button is-link" type="submit" name="submitOther" value="Telecharger"></br>
 			</div>
 		</form>
 	</div>
@@ -14,8 +21,4 @@
 
 
 <script>
-//	var side = document.querySelector('#img');
-//	document.getElementById("file").onchange = function() {
- //   	document.getElementById("form").submit();
-  //  };
 </script>

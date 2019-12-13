@@ -1,10 +1,7 @@
 <div class="columns">
-	<div class="column  is-1"  style="border:solid 2px red;"   >
-		ONE
+	<div class="column  is-1">
 	</div>
-	<div class="column  is-7     "   style="border:solid 2px red;" >
-		HEIGHT
-
+	<div class="column  is-7" >
 		<div class="columns" id="pastille">
 			<div class="column is-one-quarter">
 				<figure class="image is-4by3">
@@ -24,8 +21,8 @@
 				</figure>
 				<input id="r3" type="radio" name="radio" value="img/wings.png">
 			</div>
-			<div class="column is-one-quarter"  style="border:solid 2px red;"  >
-				<figure class="image is-4by3"  style="border:solid 2px green;" >
+			<div class="column is-one-quarter">
+				<figure class="image is-4by3">
 				<img src="img/cadre.png"/>
 				</figure>
 				<input id="r4" type="radio" name="radio" value="img/cadre.png">
@@ -34,16 +31,14 @@
 
 <div id="cam">
 
-<div id="the_form">
-</div>
+	<div id="the_form">
+	</div>
 
 <?php if (isset($answer) && isset($answer['uploadPic']) && $answer['uploadPic'] == true){  ?>
 	<figure>
-	<img id="picUploaded" src="/photo_upload/<?= $login ; ?>" >
+		<img id="picUploaded" src="/photo_upload/<?= $login ; ?>" >
 	</figure>
-
 	<input type="button" name="screenShot" value="Take ScreenShot" id="screenshot-button">
-
 
 <script>
 		const screenshotButton = document.getElementById("screenshot-button");
@@ -66,11 +61,11 @@
 
 </div>
 
-<div class="column  is-3"   style="border:solid 2px red;" >
+<div class="column  is-3">
 	<div id="side">
 	</div>
 </div>
-<div class="column  is-1"  style="border:solid 2px red;">
+<div class="column  is-1">
 </div>
 
 </div>
@@ -91,6 +86,13 @@
 			const divElem = document.createElement("div");
 			divElem.innerHTML = this.responseText;
 			the_form_div.append(divElem);
+	console.log("hello world")
+	elem = document.getElementById("file")
+	console.log(elem);
+	elem.onchange = function() {
+		console.log("je submit");
+		document.getElementById("form").submit();
+	};
 		}
 	}
 
