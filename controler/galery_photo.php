@@ -51,7 +51,7 @@ if ($method == "GET"){
 		$id_photo = htmlspecialchars($match_route->_id);
 		$photo = get_photo_with_id($conn, $match_route->_id);
 		sup_photo($conn, $id_photo);
-		unlink($photo['name']);
+		unlink("/public/".$photo['name']);
 		$_SESSION['answer']['del_pic'] = true;
 		header('Location: '.$fullDomain.'/my-galery');
 	}
@@ -64,8 +64,3 @@ else{
 	echo "404 error";
 }
 ?>
-
-
-
-
-

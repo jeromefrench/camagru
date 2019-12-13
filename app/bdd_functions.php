@@ -1,13 +1,15 @@
 <?php
 function connection_bdd()
 {
-	$servername = "localhost";
-	$username = "root";
-	$password = "rootpasswd";
-	$dbname = "camagru";
+
+	require '/Users/jchardin/my_mamp/apache2/htdocs/camagru/config/database.php';
+	//$servername = "localhost";
+	//$username = "root";
+	//$password = "rootpasswd";
+	//$dbname = "camagru";
 
 	try {
-		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+		$conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
 		// set the PDO error mode to exception
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		/* echo "Connected successfully"; */

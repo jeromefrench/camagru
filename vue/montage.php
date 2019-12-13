@@ -38,7 +38,9 @@
 	<figure class="image">
 		<img id="picUploaded" src="/public/photo_upload/<?= $login ; ?>" >
 	</figure>
+<div class="control  has-text-centered" style="margin-top:20px;">
 	<input type="button" class="button is-link" name="screenShot" value="Take ScreenShot" id="screenshot-button">
+</div>
 
 <script>
 		const screenshotButton = document.getElementById("screenshot-button");
@@ -117,7 +119,6 @@
 		console.log("lutilisateur a refuser");
 		askForm.open("POST", "/public/formulaire_up.php");
 		askForm.send();
-
 });
 
 	function getFilterName(){
