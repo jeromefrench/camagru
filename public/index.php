@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 session_start();
 $domainName = "https://localhost";
 $port = ":8443";
@@ -91,46 +90,6 @@ require_once '../app/Router.class.php';
 $router = new Router($uri);
 $router->map('GET','', "galery", "Home"); //methode, path, target name
 $router->map('GET','/', "galery", "Home");
-=======
-$uri = $_SERVER['REQUEST_URI'];
-
-if ($uri == "/sign_up_traitement.php")
-{
-	/* require "../app/sign_up_traitement.php"; */
-}
-else if ($uri == "/sign_in_traitement.php")
-{
-	require "../app/sign_in_traitement.php";
-}
-else if ($uri == "/sign-out")
-{
-	require '../app/sign_out.php';
-}
-else if ($uri == "/photo_like_comment_traitement.php")
-{
-	require '../app/photo_like_comment_traitement.php';
-}
-else if ($uri == "/my_account_traitement.php")
-{
-	require '../app/my_account_traitement.php';
-}
-else if ($uri == "/setup.php")
-{
-	require '../config/setup.php';
-}
-
-
-require_once '../app/Route.class.php';
-require_once '../app/Router.class.php';
-
-$uri = $_SERVER['REQUEST_URI'];
-$router = new Router($uri);
-
-
-$router->map('GET','', "galery", "Home"); //methode, path, target name
-$router->map('GET','/', "galery", "Home");
-$router->map('GET','/home', "galery", "Home");
->>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 $router->map('GET','/contact-us', "contact", "Contact");
 $router->map('GET','/sign-up', "sign_up", "Sign-Up");
 $router->map('GET','/sign-in', "sign_in", "Sign-In");
@@ -143,7 +102,6 @@ $router->map('GET','/montage', "montage", "Montage");
 $router->map('GET','/confirmation', "confirmation_user", "Confirm Account");
 $router->map('GET','/new-password-request', "new_password_request", "New password");
 $router->map('GET','/changement-password', "changement_password", "New password");
-<<<<<<< HEAD
 $router->map('GET','/sign-out', "sign_out", "Sign Out");
 $match_route = $router->run();
 if ($match_route != false) {
@@ -151,20 +109,4 @@ if ($match_route != false) {
 } else {
 	echo "404 error";
 }
-=======
-
-/* $router->map('GET','/my-galery/[i:id]', "galery"); //methode, path, target */
-
-$match_route = $router->run();
-
-if ($match_route != false)
-{
-		require "../controler/{$match_route->_target}.php";
-}
-else
-{
-	echo "404 error";
-}
-
->>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 ?>

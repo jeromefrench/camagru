@@ -16,7 +16,6 @@ if($method == "GET"){
 	require '../vue/header.php';
 	require '../vue/galery.php';
 	require '../vue/footer.php';
-
 }
 else {
 	echo "404 error";

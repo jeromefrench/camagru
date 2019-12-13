@@ -254,11 +254,7 @@ function get_photo_with_id($conn, $id)
 
 function add_comment($conn, $commentaire, $id_user, $id_photo)
 {
-<<<<<<< HEAD
 	//echo "on add comment";
-=======
-	echo "on add comment";
->>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 	try {
     	$sql = "INSERT INTO `commentaires` (`id`, `commentaire`, `time_stamp`, `id_user`, `id_photo`) VALUES (NULL, '".$commentaire."',  '2019-11-09', '".$id_user."'  , '".$id_photo."'  );";
 
@@ -266,19 +262,12 @@ function add_comment($conn, $commentaire, $id_user, $id_photo)
     	$conn->exec($sql);
     	/* echo "New record created successfully"; */
     }
-<<<<<<< HEAD
 	catch(PDOException $e) {
-=======
-	catch(PDOException $e)
-    {
-		echo "hello2";
->>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
     	echo $sql . "<br>" . $e->getMessage();
     }
 	$id_user = get_id_user_from_id_photo($conn, $id_photo);
 	$login = get_login_user($conn, $id_user);
 	$selected = get_notification($conn, $login);
-<<<<<<< HEAD
 	if ($selected) {
 		require '../app/send_email_notification.php';
 		header("Location: ".$_SERVER['HTTP_REFERER']."");
@@ -286,13 +275,6 @@ function add_comment($conn, $commentaire, $id_user, $id_photo)
 	}
 		header("Location: ".$_SERVER['HTTP_REFERER']."");
 		exit;
-=======
-	echo $selected;
-	if ($selected)
-	{
-		require '../app/send_email_notification.php';
-	}
->>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 }
 function add_like($conn, $id_user, $id_photo)
 {
