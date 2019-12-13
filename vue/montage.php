@@ -5,27 +5,27 @@
 		<div class="columns" id="pastille">
 			<div class="column is-one-quarter">
 				<figure class="image is-4by3">
-					<img src="img/coeur.png"/>
+					<img src="/public/img/coeur.png"/>
 				</figure>
-				<input id="r1" type="radio" checked="checked" name="radio" value="img/coeur.png">
+				<input id="r1" type="radio" checked="checked" name="radio" value="coeur.png">
 			</div>
 			<div class="column is-one-quarter">
 				<figure class="image is-4by3">
-					<img src="img/spider.png"/>
+					<img src="/public/img/spider.png"/>
 				</figure>
-				<input id="r2" type="radio" name="radio" value="img/spider.png">
+				<input id="r2" type="radio" name="radio" value="spider.png">
 			</div>
 			<div class="column is-one-quarter">
 				<figure class="image is-4by3">
-					<img src="img/wings.png"/>
+					<img src="/public/img/wings.png"/>
 				</figure>
-				<input id="r3" type="radio" name="radio" value="img/wings.png">
+				<input id="r3" type="radio" name="radio" value="wings.png">
 			</div>
 			<div class="column is-one-quarter">
 				<figure class="image is-4by3">
-				<img src="img/cadre.png"/>
+				<img src="/public/img/cadre.png"/>
 				</figure>
-				<input id="r4" type="radio" name="radio" value="img/cadre.png">
+				<input id="r4" type="radio" name="radio" value="cadre.png">
 			</div>
 		</div>
 
@@ -36,7 +36,7 @@
 
 <?php if (isset($answer) && isset($answer['uploadPic']) && $answer['uploadPic'] == true){  ?>
 	<figure class="image">
-		<img id="picUploaded" src="/photo_upload/<?= $login ; ?>" >
+		<img id="picUploaded" src="/public/photo_upload/<?= $login ; ?>" >
 	</figure>
 	<input type="button" class="button is-link" name="screenShot" value="Take ScreenShot" id="screenshot-button">
 
@@ -115,7 +115,7 @@
 		}
 	}).catch(function(err) {
 		console.log("lutilisateur a refuser");
-		askForm.open("POST", "formulaire_up.php");
+		askForm.open("POST", "/public/formulaire_up.php");
 		askForm.send();
 
 });
@@ -138,7 +138,7 @@
 	function addOnSide(src){
 		var side = document.querySelector('#side');
 		const pic = document.createElement("img");
-		pic.src = src;
+		pic.src = "/public/"+src;
 		var figure = document.createElement("figure");
 		figure.class = "image is-4by3";
 		figure.append(pic);
@@ -150,7 +150,7 @@
 		formdata.append('file', src);
 		formdata.append('filter', filter);
 		formdata.append('type', type);
-		xmlhttp.open("POST", "image.php");
+		xmlhttp.open("POST", "/public/image.php");
 		/* xmlhttp.setRequestHeader('Content-Type', 'multipart/form-data'); */
 		xmlhttp.send(formdata);
 	}

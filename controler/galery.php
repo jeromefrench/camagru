@@ -1,7 +1,7 @@
 <?php
 
 if($method == "GET"){
-	require_once '../app/bdd_functions.php';
+	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd();
 	$nbr_photo = get_nbr_of_photo($conn);
 	$nbr_photo_page = 9;
@@ -17,9 +17,9 @@ if($method == "GET"){
 	$photo_first = ($current_page - 1) * $nbr_photo_page;
 	$photos = get_photo_for_page($conn, $photo_first, $nbr_photo_page);
 
-	require '../vue/header.php';
-	require '../vue/galery.php';
-	require '../vue/footer.php';
+	require $root.'/vue/header.php';
+	require $root.'/vue/galery.php';
+	require $root.'/vue/footer.php';
 }
 else {
 	echo "404 error";

@@ -5,6 +5,7 @@ $port = ":8443";
 $fullDomain = $domainName.$port;
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER["REQUEST_METHOD"];
+$root = dirname(__FILE__);
 
 if (isset($_SESSION['logon']) && $_SESSION['logon'] == true) {
 	$auth = true;
@@ -71,8 +72,8 @@ if ($restricted == true){
 
 
 //faire middleware protection
-require_once '../app/Route.class.php';
-require_once '../app/Router.class.php';
+require_once $root.'/app/Route.class.php';
+require_once $root.'/app/Router.class.php';
 $router = new Router($uri);
 $router->map('GET','', "galery", "Home"); //methode, path, target name
 $router->map('GET','/', "galery", "Home");
@@ -91,7 +92,7 @@ $router->map('GET','/changement-password', "changement_password", "New password"
 $router->map('GET','/sign-out', "sign_out", "Sign Out");
 $match_route = $router->run();
 if ($match_route != false) {
-		require "../controler/{$match_route->_target}.php";
+		require $root."/controler/{$match_route->_target}.php";
 } else {
 	echo "404 error";
 }

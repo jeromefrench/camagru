@@ -1,9 +1,9 @@
 <?php
 
 if($method == "GET"){
-	require '../vue/header.php';
-	require '../vue/contact.html';
-	require '../vue/footer.php';
+	require $root.'/vue/header.php';
+	require $root.'/vue/contact.html';
+	require $root.'/vue/footer.php';
 }
 else {
 	echo "404 error";

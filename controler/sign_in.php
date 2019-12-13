@@ -1,12 +1,12 @@
 <?php
 
 if($method == "GET"){
-	require '../vue/header.php';
-	require '../vue/sign_in.html';
-	require '../vue/footer.php';
+	require $root.'/vue/header.php';
+	require $root.'/vue/sign_in.html';
+	require $root.'/vue/footer.php';
 }
 else if ($method == "POST"){
-	require_once '../app/bdd_functions.php';
+	require_once $root.'/app/bdd_functions.php';
 
 	if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd'])){
 		$login = htmlspecialchars($_POST['login']);

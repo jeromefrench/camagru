@@ -11,7 +11,7 @@
 				<div class="card">
 					<div class="card-image">
 						<figure class="image is-4by3">
-							<a href="/galery/photo/<?php echo $photo['id'] ;?>"><img src="/<?php echo $photo['name'] ;?>"   alt="Placeholder image"    /></a>
+							<a href="/galery/photo/<?php echo $photo['id'] ;?>"><img src="/public/<?php echo $photo['name'] ;?>"   alt="Placeholder image"    /></a>
 						</figure>
 					</div>
 				</div>

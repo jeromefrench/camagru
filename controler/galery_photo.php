@@ -1,20 +1,20 @@
 <?php
 
 if ($method == "GET"){
-	require_once '../app/bdd_functions.php';
+	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd();
 	$photo = get_photo_with_id($conn, $match_route->_id);
 	$number_of_like = get_number_of_like($conn, $match_route->_id);
 	$commentaires = get_the_commentaires($conn, $match_route->_id);
 	$id_login = get_user_id($conn, $_SESSION['login']);
 
-	require '../vue/header.php';
-	require '../vue/galery_photo.php';
-	require '../vue/footer.php';
+	require $root.'/vue/header.php';
+	require $root.'/vue/galery_photo.php';
+	require $root.'/vue/footer.php';
 
 }else if ($method == "POST"){
 
-	require_once '../app/bdd_functions.php';
+	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd();
 	//************COMMENT PARSING***********************************************
 	if (isset($_POST['comment-submit'])) {

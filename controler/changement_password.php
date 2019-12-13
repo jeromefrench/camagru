@@ -3,13 +3,13 @@
 
 if($method == "GET"){
 
-	require '../vue/header.php';
-	require '../vue/new_password_form.php';
-	require '../vue/footer.php';
+	require $root.'/vue/header.php';
+	require $root.'/vue/new_password_form.php';
+	require $root.'/vue/footer.php';
 
 }else if ($method == "POST"){
 
-	require_once '../app/bdd_functions.php';
+	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd();
 
 	if (isset($_POST['passwd1']) && isset($_POST['passwd2'])){

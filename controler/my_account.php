@@ -1,20 +1,20 @@
 <?php
 
 if ($method == "GET"){
-	require_once '../app/bdd_functions.php';
+	require_once $root.'/app/bdd_functions.php';
 
 	$login = $_SESSION['login'];
 	$conn = connection_bdd();
 	$mail = get_mail_user($conn, $login);
 	$selected = get_notification($conn, $login);
 
-	require '../vue/header.php';
-	require '../vue/my_account.php';
-	require '../vue/footer.php';
+	require $root.'/vue/header.php';
+	require $root.'/vue/my_account.php';
+	require $root.'/vue/footer.php';
 
 }else if ($method == "POST"){
 
-	require_once '../app/bdd_functions.php';
+	require_once $root.'/app/bdd_functions.php';
 	$login = $_SESSION['login'];
 	$conn = connection_bdd();
 

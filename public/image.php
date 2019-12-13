@@ -21,7 +21,7 @@ else
 	$image_1 = imagecreatefrompng($test1);
 }
 $filter = $_POST['filter'];
-$image_2 = imagecreatefrompng($filter);
+$image_2 = imagecreatefrompng("./img/".$filter);
 imagealphablending($image_2, true);
 imagesavealpha($image_2, true);
 imagecopy($image_1, $image_2, 0, 0, 0, 0, 640, 480);

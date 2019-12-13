@@ -2,7 +2,7 @@
 
 if($method == "GET"){
 
-	require_once '../app/bdd_functions.php';
+	require_once $root.'/app/bdd_functions.php';
 
 	$conn = connection_bdd();
 	$id_user = get_user_id($conn, $_SESSION['login']);
@@ -17,9 +17,9 @@ if($method == "GET"){
 	$photos = get_photo_for_page_for_user($conn, $photo_first, $nbr_photo_page, $id_user);
 
 
-	require '../vue/header.php';
-	require '../vue/galery.php';
-	require '../vue/footer.php';
+	require $root.'/vue/header.php';
+	require $root.'/vue/galery.php';
+	require $root.'/vue/footer.php';
 
 }
 else {

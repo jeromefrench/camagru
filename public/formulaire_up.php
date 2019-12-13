@@ -6,7 +6,7 @@
 					<input  id="file" class="file-input" type="file" name="myFile">
 					<span class="file-cta">
 						<span class="file-icon">
-							<img src="./photo-icon-upload-2.png">
+							<img src="/public/img/icon-upload.png">
 						</span>
 						<span class="file-label">Telecharger une photo</span>
 					</span>

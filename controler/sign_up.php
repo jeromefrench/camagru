@@ -1,13 +1,13 @@
 <?php
 
 if($method == "GET"){
-	require '../vue/header.php';
-	require '../vue/sign_up_form.html';
-	require '../vue/footer.php';
+	require $root.'/vue/header.php';
+	require $root.'/vue/sign_up_form.html';
+	require $root.'/vue/footer.php';
 }
 else if ($method == "POST"){
-	require_once '../app/bdd_functions.php';
-	require_once '../app/strong_passwd.php';
+	require_once $root.'/app/bdd_functions.php';
+	require_once $root.'/app/strong_passwd.php';
 	$conn = connection_bdd();
 
 	if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['passwd'])){
@@ -42,7 +42,7 @@ else if ($method == "POST"){
 	$user['mail'] = $mail;
 	$user['passwd'] = hash("sha256", $passwd);
 	add_new_user_confirmation($conn, $user);
-	require '../app/send_email_confirmation.php';
+	require $root'/app/send_email_confirmation.php';
 	$_SESSION['answer']['confirm_email'] = true;
 	header('Location: '.$fullDomain);
 	exit;

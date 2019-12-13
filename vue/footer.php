@@ -1,5 +1,5 @@
 
-<?php include '../app/notification.php';?>
+<?php include $root.'/app/notification.php';?>
 
 
 </section>

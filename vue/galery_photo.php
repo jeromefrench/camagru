@@ -4,7 +4,7 @@
 	<div class="column  is-8     ">
 		<form method="post" action="/galery/photo/<?= $match_route->_id;?>" >
 			<figure class="image is-4by3">
-				<img src="/<?= $photo['name'];?>"/>
+				<img src="/public/<?= $photo['name'];?>"/>
 			</figure>
 		<div class="columns">
 			<div class="column">
