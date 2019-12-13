@@ -77,12 +77,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
-
-
-
-
-
-
-
-

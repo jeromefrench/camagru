@@ -2,22 +2,18 @@
 
 if ($method == "GET"){
 	require_once '../app/bdd_functions.php';
-
 	$login = $_SESSION['login'];
 	$conn = connection_bdd();
 	$mail = get_mail_user($conn, $login);
 	$selected = get_notification($conn, $login);
-
 	require '../vue/header.php';
 	require '../vue/my_account.php';
 	require '../vue/footer.php';
-
-}else if ($method == "POST"){
-
+}
+else if ($method == "POST"){
 	require_once '../app/bdd_functions.php';
 	$login = $_SESSION['login'];
 	$conn = connection_bdd();
-
 	//************SUBMIT PARSING********************************************************
 	if (isset($_POST['submit'])){
 		$submit = htmlspecialchars($_POST['submit']);
@@ -51,7 +47,6 @@ if ($method == "GET"){
 		$_SESSION['answer']['new_login'] = true;
 		header('Location: '.$fullDomain.'/my-account');
 		exit;
-
 	//************MAIL PARSING**************************************************
 	} else if ($submit == "I change my email adress") {
 		if (isset($_POST['mail'])){
@@ -119,5 +114,3 @@ if ($method == "GET"){
 else {
 	echo "404 error";
 } ?>
-
-

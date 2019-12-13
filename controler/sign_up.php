@@ -43,4 +43,5 @@ else if ($method == "POST"){
 else {
 	echo "404 error";
 }
+
 ?>

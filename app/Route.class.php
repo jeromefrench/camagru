@@ -28,6 +28,7 @@ class Route{
 		$regex2 =  "/^({$path}) ([0-9]+)\$/i";
 		$regex3 =  "/^({$path}) ([^\s]+) ([0-9]+)\$/i";
 
+<<<<<<< HEAD
 		if (preg_match($regex2, $url, $match)) {
 			$this->_id = $match[2];
 			return true;
@@ -39,6 +40,25 @@ class Route{
 		{
 			return true;
 		} else {
+=======
+		if (preg_match($regex2, $url, $match))
+		{
+			$this->_id = $match[2];
+			return true;
+		}
+		else if (preg_match($regex3, $url, $match))
+		{
+			$this->_slug = $match[2];
+			$this->_id = $match[3];
+			return true;
+		}
+		else if (preg_match($regex1, $url))  // pattern,  input string
+		{
+			return true;
+		}
+		else
+		{
+>>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 			return false;
 		}
     }

@@ -1,7 +1,15 @@
 var xmlhttp = new XMLHttpRequest();
 var xmlhttp2 = new XMLHttpRequest();
+<<<<<<< HEAD
 
 function addFilter(src, filter, type){
+=======
+const constraints = {
+  	video: true
+};
+
+function add_image_on_side(src, filter, type){
+>>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 	var formdata = new FormData();
 	console.log(src);
 	formdata.append('file', src);
@@ -65,7 +73,11 @@ function on_creer_le_bouton(photo_bool)
   			canvas.height = video.videoHeight;
   			canvas.getContext('2d').drawImage(video, 0, 0);
 		}
+<<<<<<< HEAD
 		//get the filter name
+=======
+		//get the filter nameh
+>>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 		if (document.getElementById('r1').checked) {
   			filter = document.getElementById('r1').value;
 		}
@@ -80,11 +92,19 @@ function on_creer_le_bouton(photo_bool)
 		}
 		if (photo_bool == 1)
 		{
+<<<<<<< HEAD
 			addFilter("/photo_upload/"+login, filter, "photo");
 		}
 		else
 		{
 			addFilter(canvas.toDataURL('image/png'), filter, "webcam");
+=======
+			add_image_on_side("/photo_upload/"+login, filter, "photo");
+		}
+		else
+		{
+			add_image_on_side(canvas.toDataURL('image/png'), filter, "webcam");
+>>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 		}
 	};
 }

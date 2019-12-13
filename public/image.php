@@ -25,5 +25,9 @@ imagecopy($image_1, $image_2, 0, 0, 0, 0, 640, 480);
 $number = rand(0, 50000);
 $string = "image".$number.".png";
 imagepng($image_1, "usr_photo/".$string);
+<<<<<<< HEAD
 echo "usr_photo/".$string;  //NE PAS SUP
+=======
+echo "usr_photo/".$string;
+>>>>>>> b570eaf573cc3e666887995724ba8589d0b18e94
 ?>
