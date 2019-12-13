@@ -2,7 +2,7 @@
 	<div class="form">
 		<form id="form" enctype="multipart/form-data" method="post"  action="/montage">
 			<div class="file is-boxed  has-name">
-				<label class="file-label">
+				<label class="file-label"   style="margin-left:auto; margin-right:auto;">
 					<input  id="file" class="file-input" type="file" name="myFile">
 					<span class="file-cta">
 						<span class="file-icon">

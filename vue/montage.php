@@ -35,7 +35,7 @@
 	</div>
 
 <?php if (isset($answer) && isset($answer['uploadPic']) && $answer['uploadPic'] == true){  ?>
-	<figure>
+	<figure class="image">
 		<img id="picUploaded" src="/photo_upload/<?= $login ; ?>" >
 	</figure>
 	<input type="button" name="screenShot" value="Take ScreenShot" id="screenshot-button">

@@ -17,3 +17,19 @@
 
 </body>
 </html>
+
+
+<!-- style pour garder le footer en bas -->
+<style>
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
+}
+
+
+</style>

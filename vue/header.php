@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 		<!-- <link rel="stylesheet" href="/style.css"/> -->
 	</head>
-<body>
+<body class="Site">
 	<nav class="navbar" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="<?= $fullDomain ; ?>"><?php require '../public/img/logo.html'; ?></a>
@@ -40,7 +40,7 @@
 </nav>
 
 
-<section   class="section">
+<section   class="section Site-content"   >
 
 <div id="notification">
 </div>
