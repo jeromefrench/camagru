@@ -10,9 +10,8 @@ if ($method == "GET"){
 	require $root.'/vue/header.php';
 	require $root.'/vue/galery_photo.php';
 	require $root.'/vue/footer.php';
-
-}else if ($method == "POST"){
-
+}
+else if ($method == "POST"){
 	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd();
 	//************COMMENT PARSING***********************************************
@@ -43,7 +42,6 @@ if ($method == "GET"){
 	//************LIKE PARSING*************************************************
 	} else if (isset($_POST['like-submit'])) {
 		$id_user = get_user_id($conn, $_SESSION['login']);
-		
 		$id_photo = htmlspecialchars($match_route->_id);
 		add_like($conn, $id_user, $id_photo);
 		$_SESSION['answer']['new_like'] = true;

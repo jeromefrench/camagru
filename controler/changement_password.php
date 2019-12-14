@@ -4,11 +4,11 @@ if($method == "GET"){
 	require $root.'/vue/header.php';
 	require $root.'/vue/new_password_form.html';
 	require $root.'/vue/footer.php';
-
-}else if ($method == "POST"){
+}
+else if ($method == "POST"){
 	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd();
-	if (isset($_POST['passwd1']) && isset($_POST['passwd2'])){
+	if (isset($_POST) && isset($_POST['passwd1']) && isset($_POST['passwd2'])){
 		$new_passwd1 = htmlspecialchars($_POST['passwd1']);
 		$new_passwd2 = htmlspecialchars($_POST['passwd2']);
 	}
@@ -24,9 +24,16 @@ if($method == "GET"){
 		header('Location: '.$fullDomain.'/changement-password');
 		exit;
 	}
-	else if (!is_numero_and_login_match_new_passwd($conn, $login, $numero)){
+	if (!is_numero_and_login_match_new_passwd($conn, $login, $numero)){
 		$_SESSION['answer']['false_link'] = true;
 		header('Location: '.$fullDomain.'/changement-password');
+		exit;
+	}
+	$ans = isPasswdStrong($passwd1);
+	if ($ans !== true){
+		$_SESSION['answer']['passwdWeak'] = true;
+		$_SESSION['answer']['message'] = $ans;
+		header('Location: '.$fullDomain.'/changement_password');
 		exit;
 	}
 	$passwd = hash("sha256", $passwd1);

@@ -9,8 +9,7 @@ else if ($method == "POST"){
 	require_once $root.'/app/bdd_functions.php';
 	require_once $root.'/app/strong_passwd.php';
 	$conn = connection_bdd();
-
-	if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['passwd'])){
+	if (isset($_POST) && isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['passwd'])){
 		$login = htmlspecialchars($_POST['login']);
 		$mail = htmlspecialchars($_POST['mail']);
 		$passwd = htmlspecialchars($_POST['passwd']);

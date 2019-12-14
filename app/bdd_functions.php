@@ -127,7 +127,6 @@ function get_nbr_of_photo($conn) {
 		handleError("Erreur dans get_nbr_of_photo :".$e->getMessage());
 	}
 	return false;
-
 }
 
 //galery
@@ -256,7 +255,7 @@ function update_notification($conn, $login, $notif) {
 		$sql = "UPDATE `user` SET `notif`='".$notif."' WHERE `login` LIKE '".$login."'";
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
-		echo $stmt->rowCount() . " records UPDATED successfully";
+		//echo $stmt->rowCount() . " records UPDATED successfully";
 	}
 	catch(PDOException $e) {
 		handleError("Erreur dans update notification :".$e->getMessage());
@@ -297,7 +296,7 @@ function add_new_user_confirmation($conn, $user){
 			VALUES ('{$user['numero_unique']}','{$user['login']}', '{$user['mail']}', '{$user['passwd']}')";
 		// use exec() because no results are returned
 		$conn->exec($sql);
-		echo "New record created successfully";
+		//echo "New record created successfully";
 	}
 	catch(PDOException $e) {
 		handleError("Erreur dans add new user confirmation :".$e->getMessage());
@@ -327,7 +326,7 @@ function is_login_and_mail_match($conn, $login, $mail) {
 //changement_password
 function is_numero_and_login_match_new_passwd($conn, $login, $numero) {
 	$sql = "SELECT * FROM `new_password` WHERE `login` LIKE '".$login."' ORDER BY id DESC ";
-	echo $sql;
+	//echo $sql;
 	try {
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();

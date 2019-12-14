@@ -2,12 +2,10 @@
 
 if ($method == "GET"){
 	require_once $root.'/app/bdd_functions.php';
-
 	$login = $_SESSION['login'];
 	$conn = connection_bdd();
 	$mail = get_mail_user($conn, $login);
 	$selected = get_notification($conn, $login);
-
 	require $root.'/vue/header.php';
 	require $root.'/vue/my_account.php';
 	require $root.'/vue/footer.php';
@@ -85,12 +83,18 @@ if ($method == "GET"){
 			$_SESSION['answer']['information_missing'] = true;
 			header('Location: '.$fullDomain.'/my-account');
 			exit;
-		 } else {
-			$passwd = hash("sha256", $new_passwd1);
-			update_passwd($conn, $login, $passwd);
-			$_SESSION['answer']['passwd_change'] = true;
+		 }
+		$ans = isPasswdStrong($new_passwd1);
+		if ($ans !== true){
+			$_SESSION['answer']['passwdWeak'] = true;
+			$_SESSION['answer']['message'] = $ans;
 			header('Location: '.$fullDomain.'/my-account');
+			exit;
 		}
+		$passwd = hash("sha256", $new_passwd1);
+		update_passwd($conn, $login, $passwd);
+		$_SESSION['answer']['passwd_change'] = true;
+		header('Location: '.$fullDomain.'/my-account');
 		exit;
 		//************NOTIFICATION PARSING************************************************
 	} else if ($submit == "I change notification") {
