@@ -14,9 +14,15 @@ if ($method == "GET"){
 else if ($method == "POST"){
 	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd();
+	$id_photo = htmlspecialchars($match_route->_id);
+	$id_user = get_user_id($conn, $_SESSION['login']);
 	//************COMMENT PARSING***********************************************
+	if (!isset($_POST)){
+		$_SESSION['answer']['wrong'] = true;
+		header('Location: '.$fullDomain.'/galery/photo/'.$id_photo);
+		exit;
+	}
 	if (isset($_POST['comment-submit'])) {
-		$id_photo = htmlspecialchars($match_route->_id);
 		if (isset($_POST['comment'])){
 			$commentaire = htmlspecialchars($_POST['comment']);
 		}
@@ -30,7 +36,6 @@ else if ($method == "POST"){
 			header('Location: '.$fullDomain.'/galery/photo/'.$id_photo);
 			exit;
 		}
-		$id_user = get_user_id($conn, $_SESSION['login']);
 		add_comment($conn, $commentaire, $id_user, $id_photo);
 		$selected = get_notification($conn, $login);
 		if ($selected) {
@@ -43,20 +48,27 @@ else if ($method == "POST"){
 		exit;
 	//************LIKE PARSING*************************************************
 	} else if (isset($_POST['like-submit'])) {
-		$id_user = get_user_id($conn, $_SESSION['login']);
-		$id_photo = htmlspecialchars($match_route->_id);
 		add_like($conn, $id_user, $id_photo);
 		$_SESSION['answer']['new_like'] = true;
 		header('Location: '.$fullDomain.'/galery/photo/'.$id_photo);
 		exit;
 	//************DELETE PARSING***********************************************
 	} else if (isset($_POST['submit-sup'])) {
-		$id_photo = htmlspecialchars($match_route->_id);
+	$id_login = get_user_id($conn, $_SESSION['login']);
+	$photo = get_photo_with_id($conn, $match_route->_id);
+	if($id_login == $photo['id_user'] ){
 		$photo = get_photo_with_id($conn, $match_route->_id);
 		sup_photo($conn, $id_photo);
 		unlink("/public/".$photo['name']);
 		$_SESSION['answer']['del_pic'] = true;
 		header('Location: '.$fullDomain.'/my-galery');
+		exit;
+		}
+	else{
+		//la photo vous appartient pas
+		header('Location: '.$fullDomain.'/my-galery');
+		exit;
+	}
 	}
 	else {
 		header('Location: '.$fullDomain.'/my-galery');
