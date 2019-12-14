@@ -47,6 +47,7 @@ if ($type == "webcam")
 		echo "error6";
 		exit;
 	}
+	unlink('photo1.png');
 }
 else
 {

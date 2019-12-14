@@ -47,6 +47,7 @@
 		const canvas = document.createElement('canvas');
 		const photo = document.getElementById("picUploaded");
 		screenshotButton.onclick = function() {
+			console.log("hello");
   			canvas.width = photo.videoWidth;
   			canvas.height = photo.videoHeight;
   			canvas.getContext('2d').drawImage(photo, 0, 0);
