@@ -1,8 +1,6 @@
 <?php
 
 if($method == "GET"){
-	$_SESSION['answer']['uploadPic'] = false;
-
 	require $root.'/vue/header.php';
 	require $root.'/vue/montage.php';
 	require $root.'/vue/footer.php';

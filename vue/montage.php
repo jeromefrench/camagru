@@ -38,9 +38,9 @@
 	<figure class="image">
 		<img id="picUploaded" src="/public/photo_upload/<?= $login ; ?>" >
 	</figure>
-<div class="control  has-text-centered" style="margin-top:20px;">
-	<input type="button" class="button is-link" name="screenShot" value="Take ScreenShot" id="screenshot-button">
-</div>
+	<div class="control  has-text-centered" style="margin-top:20px;">
+		<input type="button" class="button is-link" name="screenShot" value="Take ScreenShot" id="screenshot-button">
+	</div>
 
 <script>
 		const screenshotButton = document.getElementById("screenshot-button");
@@ -80,22 +80,6 @@
 		video: true
 	};
 
-	askForm.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var the_form_div = document.querySelector('#the_form');
-			const divElem = document.createElement("div");
-			divElem.innerHTML = this.responseText;
-			the_form_div.append(divElem);
-	console.log("hello world")
-	elem = document.getElementById("file")
-	console.log(elem);
-	elem.onchange = function() {
-		console.log("je submit");
-		document.getElementById("form").submit();
-	};
-		}
-	}
-
 	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
 		var cam = document.querySelector('#cam');
 		cam.innerHTML = '<video style="margin-left: auto; margin-right: auto; display: block;" autoplay></video>';
@@ -118,6 +102,39 @@
 		askForm.open("POST", "/public/formulaire_up.php");
 		askForm.send();
 });
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+//la chaine commence pas success on l'ajoute
+			var regex = RegExp('^sucesspic');
+			$subject = this.responseText;
+			if (regex.test($subject)){
+			var re = /^sucesspic/g; 
+			var str = $subject;
+			var src = re[Symbol.replace](str, '');
+//$src = $subject.replace($pattern, $replace);
+//var src = $subject.replace(/[\n\t\r]/g,"").trim();
+				addOnSide(src);
+			}
+			else{
+				console.log($ans);
+				notification("Erreur dans le traitement de la photo");
+			}
+		}
+	}
+
+	askForm.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var the_form_div = document.querySelector('#the_form');
+			const divElem = document.createElement("div");
+			divElem.innerHTML = this.responseText;
+			the_form_div.append(divElem);
+			elem = document.getElementById("file")
+			elem.onchange = function() {
+			document.getElementById("form").submit();
+			};
+		}
+	}
 
 	function getFilterName(){
 		if (document.getElementById('r1').checked) {
@@ -154,11 +171,5 @@
 		xmlhttp.send(formdata);
 	}
 
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var src = this.responseText.replace(/[\n\t\r]/g,"").trim();
-			addOnSide(src);
-		}
-	}
 
 </script>

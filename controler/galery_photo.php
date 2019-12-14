@@ -54,21 +54,21 @@ else if ($method == "POST"){
 		exit;
 	//************DELETE PARSING***********************************************
 	} else if (isset($_POST['submit-sup'])) {
-	$id_login = get_user_id($conn, $_SESSION['login']);
-	$photo = get_photo_with_id($conn, $match_route->_id);
-	if($id_login == $photo['id_user'] ){
+		$id_login = get_user_id($conn, $_SESSION['login']);
 		$photo = get_photo_with_id($conn, $match_route->_id);
-		sup_photo($conn, $id_photo);
-		unlink("/public/".$photo['name']);
-		$_SESSION['answer']['del_pic'] = true;
-		header('Location: '.$fullDomain.'/my-galery');
-		exit;
+		if($id_login == $photo['id_user'] ){
+			$photo = get_photo_with_id($conn, $match_route->_id);
+			sup_photo($conn, $id_photo);
+			unlink("/public/".$photo['name']);
+			$_SESSION['answer']['del_pic'] = true;
+			header('Location: '.$fullDomain.'/my-galery');
+			exit;
 		}
-	else{
-		//la photo vous appartient pas
-		header('Location: '.$fullDomain.'/my-galery');
-		exit;
-	}
+		else{
+			//la photo vous appartient pas
+			header('Location: '.$fullDomain.'/my-galery');
+			exit;
+		}
 	}
 	else {
 		header('Location: '.$fullDomain.'/my-galery');
