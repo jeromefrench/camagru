@@ -116,19 +116,20 @@ function get_login_user($conn, $user_id)
 	}
 	return false;
 }
+
+//my_account
 function get_mail_user($conn, $login)
 {
 	try {
 		$stmt = $conn->prepare("SELECT `mail` FROM `user` WHERE `login` = '".$login."'");
 		$stmt->execute();
 		$data = $stmt->fetchAll();
-		foreach ($data as $array)
-		{
+		foreach ($data as $array) {
 			return $array['mail'];
 		}
 	}
 	catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
+		handleError("Erreur dans get mail user :".$e->getMessage());
 	}
 	return false;
 }
@@ -330,22 +331,21 @@ function get_photo_for_page_for_user($conn, $first, $nbr_per_page, $id_user)
 	}
 	return false;
 }
+
+//my_account
 function update_login($conn, $login, $new_login)
 {
 	try{
 		$sql = "UPDATE `user` SET `login`='".$new_login."' WHERE `login` LIKE '".$login."'";
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
-		echo $stmt->rowCount() . " records UPDATED successfully";
 	}
-	catch(PDOException $e)
-	{
-		echo $sql . "<br>" . $e->getMessage();
+	catch(PDOException $e) {
+		handleError("Erreur dans get notification :".$e->getMessage());
 	}
-
-	$conn = null;
 }
 
+//my_account
 function update_notification($conn, $login, $notif)
 {
 	try{
@@ -354,51 +354,38 @@ function update_notification($conn, $login, $notif)
 		$stmt->execute();
 		echo $stmt->rowCount() . " records UPDATED successfully";
 	}
-	catch(PDOException $e)
-	{
-		echo $sql . "<br>" . $e->getMessage();
+	catch(PDOException $e) {
+		handleError("Erreur dans update notification :".$e->getMessage());
 	}
-
-	$conn = null;
-
 }
 
 
-
-
+//my_account
 function update_mail($conn, $login, $new_mail)
 {
-try
-{
-	$sql = "UPDATE `user` SET `mail`='".$new_mail."' WHERE `login` LIKE '".$login."'";
-	$stmt = $conn->prepare($sql);
-	$stmt->execute();
-	echo $stmt->rowCount() . " records UPDATED successfully";
-}
-catch(PDOException $e)
-{
-	echo $sql . "<br>" . $e->getMessage();
+	try {
+		$sql = "UPDATE `user` SET `mail`='".$new_mail."' WHERE `login` LIKE '".$login."'";
+		$stmt = $conn->prepare($sql);
+		$stmt->execute();
+	}
+	catch(PDOException $e) {
+		handleError("Erreur dans update mail :".$e->getMessage());
+	}
 }
 
-$conn = null;
-}
+//my_account
 function update_passwd($conn, $login, $new_passwd1)
 {
-try
-{
-	$sql = "UPDATE `user` SET `passwd`='".$new_passwd1."' WHERE `login` LIKE '".$login."'";
-	$stmt = $conn->prepare($sql);
-	$stmt->execute();
-	echo $stmt->rowCount() . " records UPDATED successfully";
+	try
+	{
+		$sql = "UPDATE `user` SET `passwd`='".$new_passwd1."' WHERE `login` LIKE '".$login."'";
+		$stmt = $conn->prepare($sql);
+		$stmt->execute();
+	}
+	catch(PDOException $e) {
+		handleError("Erreur dans update passwd :".$e->getMessage());
+	}
 }
-catch(PDOException $e)
-{
-	echo $sql . "<br>" . $e->getMessage();
-}
-
-$conn = null;
-}
-
 
 //confirmation_user
 function get_user_confirmation($conn, $numero_unique)
@@ -505,20 +492,19 @@ function add_new_password($conn, $login, $numero){
 	}
 }
 
-
+//my_account
 function get_notification($conn, $login)
 {
 	try {
 		$stmt = $conn->prepare("SELECT `notif` FROM `user` WHERE `login` = '".$login."'");
 		$stmt->execute();
 		$data = $stmt->fetchAll();
-		foreach ($data as $array)
-		{
+		foreach ($data as $array) {
 			return $array['notif'];
 		}
 	}
 	catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
+		handleError("Erreur dans get notification :".$e->getMessage());
 	}
 	return false;
 }
