@@ -70,4 +70,7 @@ else if (isset($answer) && isset($answer['del_pic'])){
 else if (isset($answer) && isset($answer['passwdWeak'])){
 	notification($answer['message']);
 }
+else if (isset($answer) && isset($answer['error_bdd'])){
+	notification($answer['message']);
+}
 ?>

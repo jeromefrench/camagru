@@ -1,26 +1,36 @@
 <?php
+
+function goBack(){
+	if(isset($_SERVER['HTTP_REFERER'])) {
+    	$previous = $_SERVER['HTTP_REFERER'];
+	}else{
+		$previous = $fullDomain;
+	}
+	header('Location: '.$previous);
+	exit;
+}
+
+function handleError($message){
+	$_SESSION['answer']['error_bdd'] = true;
+	$_SESSION['answer']['message'] = $message;
+	goBack();
+}
+
+
 function connection_bdd()
 {
-
 	require '/Users/jchardin/my_mamp/apache2/htdocs/camagru/config/database.php';
-	//$servername = "localhost";
-	//$username = "root";
-	//$password = "rootpasswd";
-	//$dbname = "camagru";
-
 	try {
 		$conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
-		// set the PDO error mode to exception
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		/* echo "Connected successfully"; */
 	}
-	catch(PDOException $e)
-	{
-		echo "Connection failed: " . $e->getMessage();
+	catch(PDOException $e) {
+		handleError("Erreur de connexion a la bdd :".$e->getMessage());
 	}
 	return $conn;
 }
 
+//sign_in
 function is_login_exist($conn, $login)
 {
 	try {
@@ -35,8 +45,7 @@ function is_login_exist($conn, $login)
 		}
 	}
 	catch(PDOException $e) {
-		echo "hellow2";
-		echo "Error: " . $e->getMessage();
+		handleError("Erreur dans is login exist :".$e->getMessage());
 	}
 	return false;
 }
@@ -57,6 +66,7 @@ function add_new_user($conn, $user){
 }
 
 
+//sign_in
 function is_login_and_password_match($conn, $login, $passwd)
 {
 	try {
@@ -70,8 +80,7 @@ function is_login_and_password_match($conn, $login, $passwd)
 		}
 	}
 	catch(PDOException $e) {
-		echo "hello";
-		echo "Error: " . $e->getMessage();
+		handleError("Erreur dans is login and passwd match :".$e->getMessage());
 	}
 	return false;
 }
