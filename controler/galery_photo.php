@@ -7,7 +7,6 @@ if ($method == "GET"){
 	$number_of_like = get_number_of_like($conn, $match_route->_id);
 	$commentaires = get_the_commentaires($conn, $match_route->_id);
 	$id_login = get_user_id($conn, $_SESSION['login']);
-
 	require $root.'/vue/header.php';
 	require $root.'/vue/galery_photo.php';
 	require $root.'/vue/footer.php';
@@ -34,6 +33,10 @@ if ($method == "GET"){
 		}
 		$id_user = get_user_id($conn, $_SESSION['login']);
 		add_comment($conn, $commentaire, $id_user, $id_photo);
+		$selected = get_notification($conn, $login);
+		if ($selected) {
+			require $root.'/app/send_email_notification.php';
+		}
 		$_SESSION['answer']['new_comment'] = true;
 		header('Location: '.$fullDomain.'/galery/photo/'.$id_photo);
 		exit;

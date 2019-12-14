@@ -1,6 +1,7 @@
 
-<h1 class="title">Galery</h1>
-
+<div class="content has-text-centered">
+	<h1 class="title">Galery</h1>
+</div>
 <div class="columns">
 	<div class="column  is-2">
 	</div>
