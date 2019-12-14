@@ -34,7 +34,9 @@ else if ($method == "POST"){
 		add_comment($conn, $commentaire, $id_user, $id_photo);
 		$selected = get_notification($conn, $login);
 		if ($selected) {
-			require $root.'/app/send_email_notification.php';
+			$mail = get_mail_user($conn, $login);
+			$corp = "une de vos photos a recue un nouveau commentaire";
+			mail ($mail, 'Nouveau commentaire', $corp);
 		}
 		$_SESSION['answer']['new_comment'] = true;
 		header('Location: '.$fullDomain.'/galery/photo/'.$id_photo);

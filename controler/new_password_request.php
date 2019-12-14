@@ -18,7 +18,13 @@ else if ($method == "POST"){
 	}
 	$conn = connection_bdd();
 	if (is_login_and_mail_match($conn, $login, $mail)) {
-		require $root.'/app/send_email_new_passwd.php';
+		$numero = rand(0, 1000000);
+		$domain_name = $fullDomain;
+		$page = "changement-password";
+		$corp = $domain_name."/".$page."/".$login."/".$numero;
+		$conn = connection_bdd();
+		add_new_password($conn, $login, $numero);
+		mail ($mail, 'Email de confirmation changement mp', $corp);
 		$_SESSION['answer']['send_link'] = true;
 		header('Location: '.$fullDomain);
 		exit;

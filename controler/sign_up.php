@@ -41,7 +41,11 @@ else if ($method == "POST"){
 	$user['mail'] = $mail;
 	$user['passwd'] = hash("sha256", $passwd);
 	add_new_user_confirmation($conn, $user);
-	require $root.'/app/send_email_confirmation.php';
+	$numero = rand(0, 1000000);
+	$domain_name = $fullDomain;
+	$page = "confirmation";
+	$corp = $domain_name."/".$page."/".$login."/".$numero;
+	mail ($mail, 'Email de confirmation', $corp);
 	$_SESSION['answer']['confirm_email'] = true;
 	header('Location: '.$fullDomain);
 	exit;
