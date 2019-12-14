@@ -50,18 +50,16 @@ function is_login_exist($conn, $login)
 	return false;
 }
 
+//confirmation_user
 function add_new_user($conn, $user){
 
 	try {
 		$sql = "INSERT INTO user (login, mail, passwd, notif)
 			VALUES ('{$user['login']}', '{$user['mail']}', '{$user['passwd']}', '1')";
 		$conn->exec($sql);
-		echo "New record created successfully";
 	}
-	catch(PDOException $e)
-	{
-		echo "hello2";
-		echo $sql . "<br>" . $e->getMessage();
+	catch(PDOException $e) {
+		handleError("Erreur dans is login exist :".$e->getMessage());
 	}
 }
 
@@ -401,6 +399,8 @@ catch(PDOException $e)
 $conn = null;
 }
 
+
+//confirmation_user
 function get_user_confirmation($conn, $numero_unique)
 {
 	try {
@@ -410,7 +410,7 @@ function get_user_confirmation($conn, $numero_unique)
 		return $data;
 	}
 	catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
+		handleError("Erreur dans user confirmation :".$e->getMessage());
 	}
 	return false;
 }
@@ -431,13 +431,13 @@ function add_new_user_confirmation($conn, $user){
 	}
 }
 
+//new_password_request
 function is_login_and_mail_match($conn, $login, $mail)
 {
 	try {
 		$stmt = $conn->prepare("SELECT * FROM `user` WHERE `login` LIKE '".$login."' ");
 		$stmt->execute();
 		$data = $stmt->fetchAll();
-		echo "ehllo";
 		if (isset($data[0]))
 		{
 			$data = $data[0];
@@ -447,7 +447,7 @@ function is_login_and_mail_match($conn, $login, $mail)
 		return false;
 	}
 	catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
+		handleError("Erreur dans is login and mail match :".$e->getMessage());
 	}
 	return false;
 }
