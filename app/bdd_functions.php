@@ -80,6 +80,7 @@ function is_login_and_password_match($conn, $login, $passwd) {
 
 //my_galery
 //galery_photo
+//image
 function get_user_id($conn, $login) {
 	try {
 		$stmt = $conn->prepare("SELECT * FROM `user` WHERE `login` LIKE '".$login."'"); 
@@ -95,21 +96,6 @@ function get_user_id($conn, $login) {
 	return false;
 }
 
-function get_login_user($conn, $user_id) {
-	try {
-		$stmt = $conn->prepare("SELECT `login` FROM `user` WHERE `id` = '".$user_id."'");
-		$stmt->execute();
-		$data = $stmt->fetchAll();
-		foreach ($data as $array)
-		{
-			return $array['login'];
-		}
-	}
-	catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
-	}
-	return false;
-}
 
 //my_account
 function get_mail_user($conn, $login) {
@@ -128,49 +114,6 @@ function get_mail_user($conn, $login) {
 }
 
 
-function  get_id_user_from_id_photo($conn, $id_photo) {
-	try {
-		$stmt = $conn->prepare("SELECT `id_user` FROM `photos` WHERE `id` = '".$id_photo."'");
-		$stmt->execute();
-		$data = $stmt->fetchAll();
-		foreach ($data as $array)
-		{
-			return $array['id_user'];
-		}
-	}
-	catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
-	}
-	return false;
-}
-
-function insert_picture($conn, $name, $time, $id_user) {
-	try {
-		$sql = "INSERT INTO `photos` (`id`, `name`, `time`, `id_user`) VALUES (NULL, '".$name."', '2019-11-09', '".$id_user."');";
-
-		// use exec() because no results are returned
-		$conn->exec($sql);
-		//echo "New record created successfully";
-	}
-	catch(PDOException $e)
-	{
-		//echo "hello2";
-		//echo $sql . "<br>" . $e->getMessage();
-	}
-}
-
-function get_photo($conn) {
-	try {
-		$stmt = $conn->prepare("SELECT * FROM `photos`"); 
-		$stmt->execute();
-		$data = $stmt->fetchAll();
-		return $data;
-	}
-	catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
-	}
-	return false;
-}
 
 //galery
 function get_nbr_of_photo($conn) {
@@ -266,18 +209,6 @@ function get_the_commentaires($conn, $id_photo){
 	return false;
 }
 
-function get_photo_for_the_user($conn, $id_user) {
-	try {
-		$stmt = $conn->prepare("SELECT * FROM `photos` WHERE `id_user` = ".$id_user." ");
-		$stmt->execute();
-		$data = $stmt->fetchAll();
-		return $data;
-	}
-	catch(PDOException $e) {
-		echo "Error: " . $e->getMessage();
-	}
-	return false;
-}
 
 //my_galery
 function get_nbr_photo_for_the_user($conn, $id_user) {
@@ -428,20 +359,6 @@ function update_passwd($conn, $login, $new_passwd1) {
 	}
 }
 
-function add_new_password($conn, $login, $numero){ 
-	try {
-		$sql = "INSERT INTO `new_password` (login, numero)
-			VALUES ('".$login."','".$numero."')";
-		// use exec() because no results are returned
-		$conn->exec($sql);
-		echo "New record created successfully";
-	}
-	catch(PDOException $e)
-	{
-		echo "hello2";
-		echo $sql . "<br>" . $e->getMessage();
-	}
-}
 
 //my_account
 //galery_photo
@@ -470,5 +387,45 @@ function sup_photo($conn, $id_photo) {
 		handleError("Erreur dans sup photo :".$e->getMessage());
 	}
 }
+
+//vue  galery_photo
+function get_login_user($conn, $user_id) {
+	try {
+		$stmt = $conn->prepare("SELECT `login` FROM `user` WHERE `id` = '".$user_id."'");
+		$stmt->execute();
+		$data = $stmt->fetchAll();
+		foreach ($data as $array) {
+			return $array['login'];
+		}
+	}
+	catch(PDOException $e) {
+		handleError("Erreur get login user :".$e->getMessage());
+	}
+	return false;
+}
+
+//image.php
+function insert_picture($conn, $name, $time, $id_user) {
+	try {
+		$sql = "INSERT INTO `photos` (`id`, `name`, `time`, `id_user`) VALUES (NULL, '".$name."', '2019-11-09', '".$id_user."');";
+		$conn->exec($sql);
+	}
+	catch(PDOException $e) {
+		handleError("Erreur dans insert picture :".$e->getMessage());
+	}
+}
+
+//a changer send mail new password
+function add_new_password($conn, $login, $numero){ 
+	try {
+		$sql = "INSERT INTO `new_password` (login, numero)
+			VALUES ('".$login."','".$numero."')";
+		$conn->exec($sql);
+	}
+	catch(PDOException $e) {
+		handleError("Erreur add new passwd :".$e->getMessage());
+	}
+}
+
 
 ?>
