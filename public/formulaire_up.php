@@ -6,7 +6,7 @@
 					<input  id="file" class="file-input" type="file" name="myFile">
 					<span class="file-cta">
 						<span class="file-icon">
-							<img src="/public/img/icon-upload.png">
+							<i class="fas fa-upload"></i>
 						</span>
 						<span class="file-label">Telecharger une photo</span>
 					</span>
@@ -18,7 +18,3 @@
 		</form>
 	</div>
 </div>
-
-
-<script>
-</script>
