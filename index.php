@@ -42,7 +42,7 @@ if ($restricted_area == true && $auth == false){
 	$_SESSION['answer']['restricted'] = true;
 	goBack($fullDomain);
 }
-//************rooter***********************************************************
+//************router***********************************************************
 require_once $root.'/app/Route.class.php';
 require_once $root.'/app/Router.class.php';
 $router = new Router($uri);
