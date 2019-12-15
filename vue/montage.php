@@ -47,12 +47,11 @@
 		const canvas = document.createElement('canvas');
 		const photo = document.getElementById("picUploaded");
 		screenshotButton.onclick = function() {
-			console.log("hello");
   			canvas.width = photo.videoWidth;
   			canvas.height = photo.videoHeight;
   			canvas.getContext('2d').drawImage(photo, 0, 0);
 			filter = getFilterName();
-			addFilter("/photo_upload/"+login, filter, "photo");
+			addFilter("photo", filter, "photo");
 		}
 </script>
 
@@ -70,8 +69,6 @@
 </div>
 
 </div>
-
-<script type="text/javascript" > var login = '<?php echo $login; ?>'; </script>
 
 <script type="text/javascript" >
 	var xmlhttp = new XMLHttpRequest();
@@ -96,7 +93,8 @@
 			canvas.height = video.videoHeight;
 			canvas.getContext('2d').drawImage(video, 0, 0);
 			filter = getFilterName();
-			addFilter(canvas.toDataURL('image/png'), filter, "webcam");
+			data = canvas.toDataURL('image/png')
+			addFilter(data, filter, "webcam");
 		}
 	}).catch(function(err) {
 		console.log("lutilisateur a refuser");
@@ -118,7 +116,7 @@
 				addOnSide(src);
 			}
 			else{
-				console.log($ans);
+				console.log($subject);
 				notification("Erreur dans le traitement de la photo");
 			}
 		}
@@ -167,7 +165,7 @@
 		formdata.append('file', src);
 		formdata.append('filter', filter);
 		formdata.append('type', type);
-		xmlhttp.open("POST", "/public/image.php");
+		xmlhttp.open("POST", "/image");
 		/* xmlhttp.setRequestHeader('Content-Type', 'multipart/form-data'); */
 		xmlhttp.send(formdata);
 	}

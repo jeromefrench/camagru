@@ -13,6 +13,7 @@ if ($method == "GET"){
 }else if ($method == "POST"){
 
 	require_once $root.'/app/bdd_functions.php';
+	require_once $root.'/app/strong_passwd.php';
 	$login = $_SESSION['login'];
 	$conn = connection_bdd();
 

@@ -73,4 +73,7 @@ else if (isset($answer) && isset($answer['passwdWeak'])){
 else if (isset($answer) && isset($answer['error_bdd'])){
 	notification($answer['message']);
 }
+else if (isset($answer) && isset($answer['id_invalid'])){
+	notification("id invalid");
+}
 ?>

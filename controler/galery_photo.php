@@ -4,6 +4,12 @@ if ($method == "GET"){
 	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd();
 	$photo = get_photo_with_id($conn, $match_route->_id);
+	var_dump($photo);
+	if ($photo == NULL){
+		$_SESSION['answer']['id_invalid'] = true;
+		header('Location: '.$fullDomain);
+		exit;
+	}
 	$number_of_like = get_number_of_like($conn, $match_route->_id);
 	$commentaires = get_the_commentaires($conn, $match_route->_id);
 	$id_login = get_user_id($conn, $_SESSION['login']);

@@ -17,9 +17,7 @@ else if ($method == "POST"){
 		header('Location: '.$fullDomain.'/sign-in');
 		exit;
 	}
-
 	$passwd = hash("sha256", $passwd);
-
 	$conn = connection_bdd();
 	if (!is_login_exist($conn, $login)) {
 		$_SESSION['answer']['login_dont_exit'] = true;

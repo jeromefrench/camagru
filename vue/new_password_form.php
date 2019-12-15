@@ -6,7 +6,7 @@
 		<div class="column"></div>
 		<div class="column is-one-quarter">
 			<div class="form">
-				<form method="post" action="/changement-password" >
+				<form method="post" action="/changement-password/<?= $log.'/'.$numero ; ;?>" >
 					<div class="field">
 						<label class="label">Mot de passe</label>
 						<div class="control has-icons-left">

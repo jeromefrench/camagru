@@ -1,5 +1,7 @@
 <?php
 
+
+
 if($method == "GET"){
 	require_once $root.'/app/bdd_functions.php';
 

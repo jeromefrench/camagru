@@ -75,6 +75,7 @@ if ($restricted == true){
 require_once $root.'/app/Route.class.php';
 require_once $root.'/app/Router.class.php';
 $router = new Router($uri);
+$router->map('GET','/image', "image", ""); //methode, path, target name
 $router->map('GET','', "galery", "Home"); //methode, path, target name
 $router->map('GET','/', "galery", "Home");
 $router->map('GET','/contact-us', "contact", "Contact");

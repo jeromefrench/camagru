@@ -40,8 +40,9 @@ else if ($method == "POST"){
 	$user['login'] = $login;
 	$user['mail'] = $mail;
 	$user['passwd'] = hash("sha256", $passwd);
-	add_new_user_confirmation($conn, $user);
 	$numero = rand(0, 1000000);
+	$user['numero_unique'] = $numero;
+	add_new_user_confirmation($conn, $user);
 	$domain_name = $fullDomain;
 	$page = "confirmation";
 	$corp = $domain_name."/".$page."/".$login."/".$numero;

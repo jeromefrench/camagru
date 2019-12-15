@@ -1,13 +1,6 @@
 <?php
-session_start();
 
-
-if (!isset($_POST)){
-	echo "error1";
-	exit;
-}
-
-if (!(isset($_POST['type']) && isset($_POST['file']) && isset($_POST['filter']))){
+if (!(isset($_POST) && isset($_POST['type']) && isset($_POST['file']) && isset($_POST['filter']))){
 	echo "error2";
 	exit;
 }
@@ -28,73 +21,71 @@ if ($filter !== "coeur.png" && $filter !== "spider.png" && $filter !== "wings.pn
 
 if ($type == "webcam")
 {
-	$test1 = $file;
-	$test1 = str_replace('data:image/png;base64,', '', $test1);
-	$test1 = str_replace(' ', '+', $test1);
-	$test1 = base64_decode($test1);
-	if ($test1 === false){
+	$webCamRaw = str_replace('data:image/png;base64,', '', $file);
+	$webCamRaw = str_replace(' ', '+', $webCamRaw);
+	$webCamRaw = base64_decode($webCamRaw);
+	if ($webCamRaw === false){
 		echo "error5";
 		exit;
 	}
-	$fileName = 'photo1.png';
-	$ans = file_put_contents($fileName, $test1);
+	$fileName = $root.'/public/photo_upload/cam'.rand(0, 100).'.png';
+	$ans = file_put_contents($fileName, $webCamRaw);
 	if ($ans === false){
-		echo "error";
-		exit;
-	}
-	$image_1 = imagecreatefrompng('photo1.png');
-	if ($image_1 === false){
 		echo "error6";
 		exit;
 	}
-	unlink('photo1.png');
-}
-else
-{
-	$test1 = $file;
-	$test1 = "../public".$test1;
-	$image_1 = imagecreatefrompng($test1);
+	$image_1 = imagecreatefrompng($fileName);
 	if ($image_1 === false){
 		echo "error7";
 		exit;
 	}
+	unlink($fileName);
+}
+else
+{
+	$picPath = $root."/public/photo_upload/".$login;
+	$image_1 = imagecreatefrompng($picPath);
+	if ($image_1 === false){
+		echo "error8";
+		exit;
+	}
 }
 
-$image_2 = imagecreatefrompng("./img/".$filter);
+$image_2 = imagecreatefrompng($root."/public/img/".$filter);
 if ($image_2 === false){
-	echo "error8";
-	exit;
-}
-$ans = imagealphablending($image_2, true);
-if ($ans === false){
 	echo "error9";
 	exit;
 }
-
-$ans = imagesavealpha($image_2, true);
+$ans = imagealphablending($image_2, true);
 if ($ans === false){
 	echo "error10";
 	exit;
 }
 
-$ans = imagecopy($image_1, $image_2, 0, 0, 0, 0, 640, 480);
+$ans = imagesavealpha($image_2, true);
 if ($ans === false){
 	echo "error11";
 	exit;
 }
 
-$number = rand(0, 50000);
-$string = "image".$number.".png";
-$ans = imagepng($image_1, "usr_photo/".$string);
+$ans = imagecopy($image_1, $image_2, 0, 0, 0, 0, 640, 480);
 if ($ans === false){
 	echo "error12";
+	exit;
+}
+
+$number = rand(0, 50000);
+$string = "image".$number.".png";
+$ans = imagepng($image_1, $root."/public/usr_photo/".$string);
+if ($ans === false){
+	echo "error13";
 	exit;
 }
 
 $photo_name = "usr_photo/".$string;
 
 //on save
-require_once '../app/bdd_functions.php';
+require_once $root.'/app/bdd_functions.php';
 $conn = connection_bdd();
 $user_id = get_user_id($conn, $_SESSION['login']);
 insert_picture($conn, $photo_name, "time", $user_id);
