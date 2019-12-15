@@ -1,7 +1,6 @@
 <?php
 
 if ($method == "GET"){
-	require_once $root.'/app/bdd_functions.php';
 	$login = $_SESSION['login'];
 	$conn = connection_bdd($root);
 	$mail = get_mail_user($conn, $login);
@@ -11,8 +10,6 @@ if ($method == "GET"){
 	require $root.'/vue/footer.php';
 
 }else if ($method == "POST"){
-
-	require_once $root.'/app/bdd_functions.php';
 	require_once $root.'/app/strong_passwd.php';
 	$login = $_SESSION['login'];
 	$conn = connection_bdd($root);
@@ -39,6 +36,7 @@ if ($method == "GET"){
 		if ($new_login == ""){
 			$_SESSION['answer']['information_missing'] = true;
 			header('Location: '.$fullDomain.'/my-account');
+			exit;
 		}
 		if (is_login_exist($conn, $new_login)) {
 			$_SESSION['answer']['login_already_taken'] = true;
@@ -64,6 +62,7 @@ if ($method == "GET"){
 		if ($new_mail == ""){
 			$_SESSION['answer']['information_missing'] = true;
 			header('Location: '.$fullDomain.'/my-account');
+			exit;
 		}
 		update_mail($conn, $login, $new_mail);
 		$_SESSION['answer']['new_mail'] = true;

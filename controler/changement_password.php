@@ -8,7 +8,6 @@ if($method == "GET"){
 	require $root.'/vue/footer.php';
 }
 else if ($method == "POST"){
-	require_once $root.'/app/bdd_functions.php';
 	require_once $root.'/app/strong_passwd.php';
 	$conn = connection_bdd($root);
 	$log = htmlspecialchars($match_route->_slug);
@@ -44,6 +43,7 @@ else if ($method == "POST"){
 	update_passwd($conn, $log, $passwd);
 	$_SESSION['answer']['passwd_change'] = true;
 	header('Location: '.$fullDomain.'/sign-in');
+	exit;
 }
 else {
 	echo "404 error";

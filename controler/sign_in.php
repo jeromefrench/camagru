@@ -6,8 +6,6 @@ if($method == "GET"){
 	require $root.'/vue/footer.php';
 }
 else if ($method == "POST"){
-	require_once $root.'/app/bdd_functions.php';
-
 	if (isset($_POST) && isset($_POST['login']) && isset($_POST['passwd'])){
 		$login = htmlspecialchars($_POST['login']);
 		$passwd = htmlspecialchars($_POST['passwd']);

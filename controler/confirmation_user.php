@@ -3,7 +3,6 @@
 
 
 if($method == "GET"){
-	require_once $root.'/app/bdd_functions.php';
 
 	$login = htmlspecialchars($match_route->_slug);
 	$numero_unique = htmlspecialchars($match_route->_id);

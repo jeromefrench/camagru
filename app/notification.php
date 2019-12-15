@@ -11,61 +11,61 @@ if (isset($answer) && isset($answer['login_dont_exit'])){
 	notification("Le login n'existe pas");
 }
 else if (isset($answer) && isset($answer['login_and_passwd_doesnt_match'])){
-	notification("Le login et le mot de passe ne corresponde pas");
+	notification("Le login et le mot de passe ne correspondent pas");
 }
 else if (isset($answer) && isset($answer['connexion_sucessfull'])){
-	notification("Connexion reussi");
+	notification("Connexion réussie");
 }
 else if (isset($answer) && isset($answer['log_out_sucessfull'])){
-	notification("Deconnexion reussi");
+	notification("Déconnexion réussie");
 }
 else if (isset($answer) && isset($answer['restricted'])){
-	notification("Cette partie est reserve au utilisateur connecte");
+	notification("Cette partie est réservée aux utilisateurs connectés");
 }
 else if (isset($answer) && isset($answer['information_missing'])){
 	notification("Une information est manquante");
 }
 else if (isset($answer) && isset($answer['login_already_taken'])){
-	notification("Ce login existe deja, veuillez en prendre un autre");
+	notification("Ce login existe déjà, veuillez en prendre un autre");
 }
 else if (isset($answer) && isset($answer['confirm_email'])){
-	notification("Un email de confirmation viens de vous etre envoyer");
+	notification("Un email de confirmation vient de vous être envoyé");
 }
 else if (isset($answer) && isset($answer['two_passwd_different'])){
-	notification("Erreur : Les deux mots de passes sont different");
+	notification("Erreur : Les deux mots de passe sont différents");
 }
 else if (isset($answer) && isset($answer['false_link'])){
-	notification("Erreur : Votre lien n'est pas valid");
+	notification("Erreur : votre lien n'est pas valide");
 }
 else if (isset($answer) && isset($answer['passwd_change'])){
-	notification("Votre mot de passe a ete changer");
+	notification("Votre mot de passe a été changé");
 }
 else if (isset($answer) && isset($answer['send_link'])){
-	notification("Un lien permetant de modifier votre mot de passe vient de vous etre envoyer sur votre adresse mail");
+	notification("Un lien permettant de modifier votre mot de passe vient de vous être envoyé sur votre adresse mail");
 }
 else if (isset($answer) && isset($answer['wrong'])){
 	notification("Erreur : information manquante dans le post");
 }
 else if (isset($answer) && isset($answer['login_and_mail_dont_match'])){
-	notification("Login ou adresse mail erroner");
+	notification("Login ou adresse mail erroné(e)");
 }
 else if (isset($answer) && isset($answer['new_mail'])){
-	notification("L'adresse mail a ete changer");
+	notification("L'adresse mail a été changée");
 }
 else if (isset($answer) && isset($answer['new_login'])){
-	notification("Le login a ete changer");
+	notification("Le login a été changé");
 }
 else if (isset($answer) && isset($answer['update_notif'])){
-	notification("Notification changer");
+	notification("Notification changée");
 }
 else if (isset($answer) && isset($answer['new_comment'])){
-	notification("Votre commentaire a bien ete ajouter");
+	notification("Votre commentaire a bien été ajouté");
 }
 else if (isset($answer) && isset($answer['new_like'])){
-	notification("Votre like a bien ete ajoute");
+	notification("Votre like a bien été ajouté");
 }
 else if (isset($answer) && isset($answer['del_pic'])){
-	notification("La photo a bien ete supprimmer");
+	notification("La photo a bien été supprimée");
 }
 else if (isset($answer) && isset($answer['passwdWeak'])){
 	notification($answer['message']);

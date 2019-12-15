@@ -13,6 +13,7 @@ else if ($method == "POST"){
     	move_uploaded_file($_FILES['myFile']['tmp_name'], $root.'/public/photo_upload/' . $login);
 		$_SESSION['answer']['uploadPic'] = true;
 		header('Location: '.$fullDomain.'/montage');
+		exit;
 	}
 }
 else {

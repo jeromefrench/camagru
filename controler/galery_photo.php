@@ -1,7 +1,6 @@
 <?php
 
 if ($method == "GET"){
-	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd($root);
 	$photo = get_photo_with_id($conn, $match_route->_id);
 	if ($photo == NULL){
@@ -17,7 +16,6 @@ if ($method == "GET"){
 	require $root.'/vue/footer.php';
 }
 else if ($method == "POST"){
-	require_once $root.'/app/bdd_functions.php';
 	$conn = connection_bdd($root);
 	$id_photo = htmlspecialchars($match_route->_id);
 	$id_user = get_user_id($conn, $_SESSION['login']);
