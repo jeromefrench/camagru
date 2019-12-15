@@ -2,7 +2,7 @@
 
 if($method == "GET"){
 	require_once $root.'/app/bdd_functions.php';
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 	$id_user = get_user_id($conn, $_SESSION['login']);
 	$nbr_photo = get_nbr_photo_for_the_user($conn, $id_user);
 	$nbr_photo_page = 9;

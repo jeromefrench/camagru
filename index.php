@@ -6,7 +6,8 @@ $fullDomain = $domainName.$port;
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER["REQUEST_METHOD"];
 $root = dirname(__FILE__);
-
+require_once $root.'/app/bdd_functions.php';
+//************logon************************************************************
 if (isset($_SESSION['logon']) && $_SESSION['logon'] == true) {
 	$auth = true;
 	$login = $_SESSION['login'];
@@ -15,18 +16,13 @@ else {
 	$auth = false;
 	$login = null;
 }
-
-//************answer*******************************************************
-
+//************answer***********************************************************
 if (isset($_SESSION['answer'])){
 	$answer = $_SESSION['answer'];
 	unset($_SESSION['answer']);
 }
-
 //************restricted*******************************************************
-
 $restricted = false;
-
 if ($uri == "/" ||
 $uri == "/sign-up" ||
 $uri == "/sign-in" ||
@@ -42,36 +38,11 @@ else{
 	$restricted_area = true;
 }
 
-
-if ($restricted_area == false){
-	//pas de probleme
-	$uri = $uri;
+if ($restricted_area == true && $auth == false){
+	$_SESSION['answer']['restricted'] = true;
+	goBack($fullDomain);
 }
-else{
-	if (isset($_SESSION['logon']) && $_SESSION['logon'] == true){
-		//pas de probleme
-		$uri = $uri;
-	}
-	else{
-		//on redirige
-		$_SESSION['answer']['restricted'] = true;
-		if (isset($_SERVER['HTTP_REFERER'])){
-			header("Location: ".$_SERVER['HTTP_REFERER']."");
-		}else{
-			header('Location: '.$fullDomain);
-		}
-		$restricted = true;
-		exit();
-	}
-}
-if ($restricted == true){
-	exit();
-}
-
-//************restricted*******************************************************
-
-
-//faire middleware protection
+//************rooter***********************************************************
 require_once $root.'/app/Route.class.php';
 require_once $root.'/app/Router.class.php';
 $router = new Router($uri);

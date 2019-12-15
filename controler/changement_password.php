@@ -10,7 +10,7 @@ if($method == "GET"){
 else if ($method == "POST"){
 	require_once $root.'/app/bdd_functions.php';
 	require_once $root.'/app/strong_passwd.php';
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 	$log = htmlspecialchars($match_route->_slug);
 	$numero = htmlspecialchars($match_route->_id);
 

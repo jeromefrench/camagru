@@ -8,7 +8,7 @@ if($method == "GET"){
 else if ($method == "POST"){
 	require_once $root.'/app/bdd_functions.php';
 	require_once $root.'/app/strong_passwd.php';
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 	if (isset($_POST) && isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['passwd'])){
 		$login = htmlspecialchars($_POST['login']);
 		$mail = htmlspecialchars($_POST['mail']);

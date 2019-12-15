@@ -86,7 +86,7 @@ $photo_name = "usr_photo/".$string;
 
 //on save
 require_once $root.'/app/bdd_functions.php';
-$conn = connection_bdd();
+$conn = connection_bdd($root);
 $user_id = get_user_id($conn, $_SESSION['login']);
 insert_picture($conn, $photo_name, "time", $user_id);
 

@@ -8,7 +8,7 @@ if($method == "GET"){
 	$login = htmlspecialchars($match_route->_slug);
 	$numero_unique = htmlspecialchars($match_route->_id);
 
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 	$data = get_user_confirmation($conn, $numero_unique);
 
 	if (isset($data[0])){

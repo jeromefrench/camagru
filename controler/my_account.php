@@ -3,7 +3,7 @@
 if ($method == "GET"){
 	require_once $root.'/app/bdd_functions.php';
 	$login = $_SESSION['login'];
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 	$mail = get_mail_user($conn, $login);
 	$selected = get_notification($conn, $login);
 	require $root.'/vue/header.php';
@@ -15,7 +15,7 @@ if ($method == "GET"){
 	require_once $root.'/app/bdd_functions.php';
 	require_once $root.'/app/strong_passwd.php';
 	$login = $_SESSION['login'];
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 
 	//************SUBMIT PARSING********************************************************
 	if (isset($_POST['submit'])){

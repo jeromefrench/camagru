@@ -1,6 +1,6 @@
 <?php
 
-function goBack(){
+function goBack($fullDomain){
 	if(isset($_SERVER['HTTP_REFERER'])) {
     	$previous = $_SERVER['HTTP_REFERER'];
 	}else{
@@ -13,11 +13,11 @@ function goBack(){
 function handleError($message){
 	$_SESSION['answer']['error_bdd'] = true;
 	$_SESSION['answer']['message'] = $message;
-	goBack();
+	goBack($fullDomain);
 }
 
-function connection_bdd() {
-	require '/Users/jchardin/my_mamp/apache2/htdocs/camagru/config/database.php';
+function connection_bdd($root){
+	require $root.'/config/database.php';
 	try {
 		$conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

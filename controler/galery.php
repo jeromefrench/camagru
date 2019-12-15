@@ -2,7 +2,7 @@
 
 if($method == "GET"){
 	require_once $root.'/app/bdd_functions.php';
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 	$nbr_photo = get_nbr_of_photo($conn);
 	$nbr_photo_page = 9;
 	$nbr_page = ($nbr_photo / $nbr_photo_page) + 1;

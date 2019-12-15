@@ -2,9 +2,8 @@
 
 if ($method == "GET"){
 	require_once $root.'/app/bdd_functions.php';
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 	$photo = get_photo_with_id($conn, $match_route->_id);
-	var_dump($photo);
 	if ($photo == NULL){
 		$_SESSION['answer']['id_invalid'] = true;
 		header('Location: '.$fullDomain);
@@ -19,7 +18,7 @@ if ($method == "GET"){
 }
 else if ($method == "POST"){
 	require_once $root.'/app/bdd_functions.php';
-	$conn = connection_bdd();
+	$conn = connection_bdd($root);
 	$id_photo = htmlspecialchars($match_route->_id);
 	$id_user = get_user_id($conn, $_SESSION['login']);
 	//************COMMENT PARSING***********************************************

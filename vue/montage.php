@@ -104,15 +104,12 @@
 
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-//la chaine commence pas success on l'ajoute
 			var regex = RegExp('^sucesspic');
 			$subject = this.responseText;
 			if (regex.test($subject)){
-			var re = /^sucesspic/g; 
-			var str = $subject;
-			var src = re[Symbol.replace](str, '');
-//$src = $subject.replace($pattern, $replace);
-//var src = $subject.replace(/[\n\t\r]/g,"").trim();
+				var re = /^sucesspic/g; 
+				var str = $subject;
+				var src = re[Symbol.replace](str, '');
 				addOnSide(src);
 			}
 			else{
