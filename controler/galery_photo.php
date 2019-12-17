@@ -62,7 +62,7 @@ else if ($method == "POST"){
 		if($id_login == $photo['id_user'] ){
 			$photo = get_photo_with_id($conn, $match_route->_id);
 			sup_photo($conn, $id_photo);
-			unlink("/public/".$photo['name']);
+			unlink($root."/public/".$photo['name']);
 			$_SESSION['answer']['del_pic'] = true;
 			header('Location: '.$fullDomain.'/my-galery');
 			exit;
